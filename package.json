@@ -1,0 +1,12 @@
+{
+  "name": "hugo-theme-mori",
+  "private": "true",
+  "description": "only for scripts",
+  "scripts": {
+    "dev": "hugo server -s exampleSite --gc --themesDir ../.."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "packageManager": "pnpm@10.19.0"
+}

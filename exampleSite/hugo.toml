@@ -1,0 +1,37 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-US'
+title = 'Mori Theme Demo'
+theme = 'hugo-theme-mori'
+
+# Default menu structure
+# Users can override or extend this in their config
+[menus]
+[[menus.main]]
+name = 'Home'
+pageRef = '/'
+weight = 10
+
+[[menus.main]]
+name = 'Posts'
+pageRef = '/posts'
+weight = 20
+
+[[menus.main]]
+name = 'Tags'
+pageRef = '/tags'
+weight = 30
+
+
+[markup.highlight]
+wrapperClass = 'hljs'
+anchorLineNos = false
+codeFences = true
+guessSyntax = false
+hl_inline = false
+lineAnchors = ''
+lineNoStart = 1
+lineNos = false
+lineNumbersInTable = true
+noClasses = true
+style = 'github'
+tabWidth = 2

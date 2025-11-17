@@ -1,6 +1,5 @@
 +++
 date = '2025-11-17T17:22:49+08:00'
-draft = true
 title = 'Hello Mori'
 +++
 
