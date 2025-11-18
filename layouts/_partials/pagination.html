@@ -1,0 +1,38 @@
+{{ $paginator := . }}
+{{ if gt $paginator.TotalPages 1 }}
+<nav class="pagination">
+  <ul>
+    {{ if $paginator.HasPrev }}
+    <li class="pagination-item">
+      <a href="{{ $paginator.Prev.URL }}" class="pagination-link">←</a>
+    </li>
+    {{ end }}
+
+    {{ $currentPage := $paginator.PageNumber }}
+    {{ $totalPages := $paginator.TotalPages }}
+
+    {{ range $paginator.Pagers }}
+      {{ $page := .PageNumber }}
+      {{ if or (eq $page 1) (eq $page $totalPages) (and (ge $page (sub $currentPage 2)) (le $page (add $currentPage 2))) }}
+        <li class="pagination-item">
+          {{ if eq $page $currentPage }}
+            <span class="pagination-link active">{{ $page }}</span>
+          {{ else }}
+            <a href="{{ .URL }}" class="pagination-link">{{ $page }}</a>
+          {{ end }}
+        </li>
+      {{ else if or (eq $page (sub $currentPage 3)) (eq $page (add $currentPage 3)) }}
+        <li class="pagination-item">
+          <span class="pagination-ellipsis">…</span>
+        </li>
+      {{ end }}
+    {{ end }}
+
+    {{ if $paginator.HasNext }}
+    <li class="pagination-item">
+      <a href="{{ $paginator.Next.URL }}" class="pagination-link">→</a>
+    </li>
+    {{ end }}
+  </ul>
+</nav>
+{{ end }}

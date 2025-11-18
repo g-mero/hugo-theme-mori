@@ -1,0 +1,279 @@
+// ==========================================
+// Article Content Styles
+// ==========================================
+
+@use "variables" as *;
+@use "mixins" as *;
+
+article {
+  word-wrap: break-word;
+
+  // Headings
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    position: relative;
+    display: block;
+    margin-bottom: 0.8em;
+    font-weight: 700;
+    line-height: $line-height-heading;
+    color: $color-text-dark;
+  }
+
+  h1 {
+    font-size: 1.8em;
+    margin-top: 0;
+
+    @include desktop {
+      font-size: 1.6em;
+    }
+
+    @include mobile {
+      font-size: 1.4em;
+    }
+  }
+
+  h2 {
+    margin-top: 2.5em;
+    padding-left: 1em;
+    font-size: 1.4em;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      color: $color-text-lighter;
+      content: "#";
+      font-weight: 700;
+      font-size: 1em;
+      opacity: 0.6;
+    }
+
+    @include desktop {
+      font-size: 1.3em;
+    }
+
+    @include mobile {
+      font-size: 1.2em;
+      padding-left: 0.7em;
+    }
+  }
+
+  h3 {
+    margin-top: 2em;
+    font-size: 1.2em;
+
+    @include desktop {
+      font-size: 1.15em;
+    }
+
+    @include mobile {
+      font-size: 1.1em;
+    }
+  }
+
+  h4 {
+    margin-top: 1.8em;
+    font-size: 1.1em;
+
+    @include mobile {
+      font-size: 1.05em;
+    }
+  }
+
+  h5,
+  h6 {
+    margin-top: 1.5em;
+    font-size: 1em;
+    font-weight: 600;
+  }
+
+  // Paragraphs
+  p {
+    margin-bottom: 1.5em;
+    line-height: $line-height-relaxed;
+    @include word-break;
+  }
+
+  // Lists
+  ul,
+  ol {
+    margin-bottom: 1.2em;
+    padding-left: 2em;
+
+    @include mobile {
+      padding-left: 1.5em;
+    }
+  }
+
+  li {
+    margin-bottom: 0.8em;
+    padding-left: 0.5em;
+
+    &::marker {
+      color: $color-text-lighter;
+    }
+  }
+
+  ul li {
+    padding-left: 0.3em;
+  }
+
+  // Code
+  code {
+    font-family: $font-family-mono;
+    font-size: 0.9em;
+    background: $color-code-bg;
+    padding: 2px 6px;
+    border-radius: $border-radius-sm;
+    @include word-break;
+  }
+
+  pre {
+    background: $color-code-bg;
+    padding: $spacing-sm;
+    border-radius: $border-radius-md;
+    overflow-x: auto;
+    margin-bottom: 1.2em;
+
+    @include desktop {
+      padding: 12px;
+      margin-left: -$spacing-md;
+      margin-right: -$spacing-md;
+      border-radius: 0;
+    }
+
+    code {
+      background: none;
+      padding: 0;
+      font-size: 0.85em;
+    }
+  }
+
+  // Blockquote
+  blockquote {
+    margin: 1.5em 10px;
+    padding: 0.5em 10px;
+    background: inherit;
+    color: $color-main;
+    quotes: "\201C" "\201D" "\2018" "\2019";
+    font-weight: 700;
+    font-size: 0.95em;
+
+    @include mobile {
+      padding-left: $spacing-sm;
+      margin: 1.2em 0;
+      width: 100%;
+    }
+
+    &::before {
+      margin-right: 0.25em;
+      color: $color-main;
+      content: "\201C";
+      vertical-align: -0.4em;
+      font-size: 2em;
+      line-height: 0.1em;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+
+  // Images
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5em 0;
+
+    @include desktop {
+      @include full-bleed;
+    }
+  }
+
+  // Tables
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5em 0;
+    overflow-x: auto;
+
+    @include desktop {
+      font-size: $font-size-small;
+    }
+
+    @include mobile {
+      display: block;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    th,
+    td {
+      padding: $spacing-xs $spacing-sm;
+      text-align: left;
+      border-bottom: 1px solid $color-border;
+
+      @include mobile {
+        padding: 8px 10px;
+        font-size: $font-size-smaller;
+      }
+    }
+
+    th {
+      font-weight: 600;
+      border-bottom: 2px solid $color-border-dark;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+  }
+}
+
+// Code copy button
+.code-block-wrapper {
+  position: relative;
+  margin-bottom: 1.2em;
+
+  pre {
+    margin-bottom: 0;
+  }
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: $spacing-xs;
+  right: $spacing-xs;
+  padding: 2px 8px;
+  font-size: 12px;
+  color: $color-text-lighter;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    color 0.15s ease;
+  user-select: none;
+
+  &:hover {
+    color: $color-text;
+  }
+
+  &.copied {
+    color: $color-text-dark;
+  }
+}
+
+.code-block-wrapper:hover .code-copy-btn {
+  opacity: 1;
+}
+
+@include mobile {
+  .code-copy-btn {
+    opacity: 0.5;
+  }
+}

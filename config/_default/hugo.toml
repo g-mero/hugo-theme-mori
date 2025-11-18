@@ -1,2 +1,18 @@
 [pagination]
-pagerSize = 50
+pagerSize = 10
+
+# Language configuration
+[languages]
+[languages.en]
+languageCode = 'en-US'
+languageName = 'English'
+title = 'Mori'
+weight = 1
+
+[markup.highlight]
+noClasses = false
+
+[params]
+# Enable or disable syntax highlighting styles
+# Should be !noClasses
+syntax = true

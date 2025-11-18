@@ -1,26 +1,17 @@
-{{- with resources.Get "css/app.scss" }}
-  {{- $css := . | css.Sass }}
-  {{- if hugo.IsDevelopment }}
-    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-  {{- else }}
-    {{- with $css | minify | fingerprint }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-    {{- end }}
+{{- with resources.Get "css/compiled/app.css" }}
+  {{- $css := . }}
+  {{- with $css | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
   {{- end }}
 {{- end }}
 
 
 {{- /* Only load syntax.scss when using CSS classes (noClasses = false) */ -}}
-{{- if not (.Site.Params.Markup.Highlight.NoClasses) }}
-  {{- with resources.Get "css/syntax.scss" }}
-    {{- $css := . | css.Sass }}
-    {{- if hugo.IsDevelopment }}
-      <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-    {{- else }}
-      {{- with $css | minify | fingerprint }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-      {{- end }}
+{{- if site.Params.syntax }}
+  {{- with resources.Get "css/compiled/syntax.css" }}
+    {{- $css := .  }}
+    {{- with $css  | fingerprint }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
     {{- end }}
   {{- end }}
 {{- end }}
-

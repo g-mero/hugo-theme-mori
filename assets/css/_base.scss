@@ -1,0 +1,51 @@
+// ==========================================
+// Base Styles & Reset
+// ==========================================
+
+@use "variables" as *;
+@use "mixins" as *;
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+
+  @include mobile {
+    font-size: 15px;
+  }
+}
+
+body {
+  font-family: $font-family-base;
+  color: $color-text;
+  background-color: $color-background;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+a {
+  color: $color-text-dark;
+  text-decoration: none;
+  border-bottom: 1px solid $color-text-dark;
+  transition: $transition-base;
+
+  &:hover {
+    border-bottom-color: transparent;
+  }
+}
+
+hr {
+  border: none;
+  border-top: 1px solid $color-border;
+  margin: 2em 0;
+}

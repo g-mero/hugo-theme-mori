@@ -1,9 +1,21 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <section>
-      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-      {{ .Summary }}
-    </section>
+  {{ with .Content }}
+    <div class="profile">
+      {{ . }}
+    </div>
   {{ end }}
+
+  <section class="posts">
+    <h2>{{ i18n "recent_posts" }}</h2>
+    <ul class="posts-list">
+      {{ range first 5 site.RegularPages }}
+        <li class="post-item">
+          <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">
+            {{ .Date.Format "2006-01-02" }}
+          </time>
+          <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </section>
 {{ end }}
