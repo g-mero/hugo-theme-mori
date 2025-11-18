@@ -1,0 +1,42 @@
+{{/*
+  Partial: links-list
+  Display links with grouping and sorting support
+
+  Parameters:
+    - groups: Array of link groups to display
+    - limit: Maximum number of links to show (0 = no limit)
+    - showGroupName: Whether to show group names (default: true)
+*/}}
+
+{{ $groups := .groups }}
+{{ $limit := default 0 .limit }}
+{{ $showGroupName := default true .showGroupName }}
+
+{{/* Collect all items from all groups */}}
+{{ $allItems := slice }}
+{{ range $groups }}
+  {{ $sortedItems := sort .items "weight" "asc" }}
+  {{ range $sortedItems }}
+    {{ $allItems = $allItems | append . }}
+  {{ end }}
+{{ end }}
+
+{{/* Apply limit if specified */}}
+{{ if gt $limit 0 }}
+  {{ $allItems = first $limit $allItems }}
+{{ end }}
+
+{{/* Render single list */}}
+<ul class="links-list">
+  {{ range $allItems }}
+    <li class="link-item">
+      <a class="link-url" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+        <span class="link-name">{{ partial "get-localized.html" (dict "data" . "field" "name") }}</span>
+        {{ $description := partial "get-localized.html" (dict "data" . "field" "description") }}
+        {{ with $description }}
+          <span class="link-description">{{ . }}</span>
+        {{ end }}
+      </a>
+    </li>
+  {{ end }}
+</ul>

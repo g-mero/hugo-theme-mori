@@ -1,5 +1,8 @@
 # Page sections
 recent_posts = "Writing"
+links = "Links"
+all_links = "All Links"
 
 # Common
 read_more = "Read more"
+view_all = "View all"

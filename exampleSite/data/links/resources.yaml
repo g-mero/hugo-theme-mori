@@ -1,0 +1,17 @@
+# Resources Links Group
+name: "Resources"
+name_zh-cn: "资源"
+weight: 3
+
+items:
+  - name: "Mori Theme"
+    url: "https://github.com/g-mero/hugo-theme-mori"
+    description: "A minimal Hugo theme"
+    description_zh-cn: "一个简洁的 Hugo 主题"
+    weight: 1
+
+  - name: "Go Documentation"
+    url: "https://go.dev/doc/"
+    description: "Official Go programming language documentation"
+    description_zh-cn: "Go 官方文档"
+    weight: 2

@@ -1,0 +1,18 @@
+# Friends Links Group
+name: "Friends"
+name_zh-cn: "朋友们"
+weight: 1
+
+items:
+  - name: "Gmero's Blog"
+    name_zh-cn: "我的博客"
+    url: "https://www.gmero.com"
+    description: "A cool personal blog"
+    description_zh-cn: "一个很酷的个人博客"
+    weight: 1
+
+  - name: "Another Blog"
+    url: "https://example2.com"
+    description: "Another interesting site"
+    description_zh-cn: "另一个有趣的网站"
+    weight: 2

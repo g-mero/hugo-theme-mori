@@ -1,0 +1,22 @@
+{{/*
+  Get localized field value
+  Usage: {{ partial "get-localized.html" (dict "data" . "field" "name") }}
+
+  Returns:
+    - {field}_{lang} if exists (e.g., name_zh-cn)
+    - {field} as fallback
+*/}}
+
+{{ $data := .data }}
+{{ $field := .field }}
+{{ $lang := site.Language.Lang }}
+{{ $localizedField := printf "%s_%s" $field $lang }}
+
+{{ $value := "" }}
+{{ if isset $data $localizedField }}
+  {{ $value = index $data $localizedField }}
+{{ else }}
+  {{ $value = index $data $field }}
+{{ end }}
+
+{{ return $value }}

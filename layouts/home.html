@@ -19,4 +19,63 @@
     </ul>
     <a class="read-more" href="{{ "posts" | relLangURL }}">{{ i18n "read_more" }} →</a>
   </section>
+
+  {{ with site.Data.links }}
+    {{ $settings := .settings }}
+    {{ $showOnHome := default 6 $settings.showOnHome }}
+
+    {{ if gt $showOnHome 0 }}
+      {{/* Collect all groups from data/links/ directory */}}
+      {{ $allGroups := slice }}
+      {{ range $key, $value := . }}
+        {{ if ne $key "settings" }}
+          {{ $allGroups = $allGroups | append $value }}
+        {{ end }}
+      {{ end }}
+
+      {{/* Merge groups with same name */}}
+      {{ $groupsMap := dict }}
+      {{ range $allGroups }}
+        {{ $groupName := .name }}
+        {{ if isset $groupsMap $groupName }}
+          {{/* Merge items into existing group */}}
+          {{ $existing := index $groupsMap $groupName }}
+          {{ $mergedItems := $existing.items | append .items }}
+          {{ $groupsMap = merge $groupsMap (dict $groupName (merge $existing (dict "items" $mergedItems))) }}
+        {{ else }}
+          {{/* Add new group */}}
+          {{ $groupsMap = merge $groupsMap (dict $groupName .) }}
+        {{ end }}
+      {{ end }}
+
+      {{/* Convert map back to slice */}}
+      {{ $groups := slice }}
+      {{ range $key, $value := $groupsMap }}
+        {{ $groups = $groups | append $value }}
+      {{ end }}
+
+      {{/* Filter groups if homeGroups is specified */}}
+      {{ $homeGroups := $settings.homeGroups }}
+      {{ if $homeGroups }}
+        {{ $filteredGroups := slice }}
+        {{ range $groups }}
+          {{ if in $homeGroups .name }}
+            {{ $filteredGroups = $filteredGroups | append . }}
+          {{ end }}
+        {{ end }}
+        {{ $groups = $filteredGroups }}
+      {{ end }}
+
+      {{/* Sort groups by weight */}}
+      {{ $groups = sort $groups "weight" "asc" }}
+
+      {{ if $groups }}
+      <section class="links">
+        <h2>{{ i18n "links" }}</h2>
+        {{ partial "links-list.html" (dict "groups" $groups "limit" $showOnHome "showGroupName" false) }}
+        <a class="read-more" href="{{ "links" | relLangURL }}">{{ i18n "view_all" }} →</a>
+      </section>
+      {{ end }}
+    {{ end }}
+  {{ end }}
 {{ end }}

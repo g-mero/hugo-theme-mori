@@ -12,3 +12,8 @@ weight = 20
 name = '文章'
 pageRef = '/posts'
 weight = 30
+
+[[main]]
+name = '友情链接'
+pageRef = '/links'
+weight = 40

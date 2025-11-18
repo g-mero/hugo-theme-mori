@@ -1,5 +1,8 @@
 # 页面区块
 recent_posts = "最近文章"
+links = "友情链接"
+all_links = "全部链接"
 
 # 通用
 read_more = "阅读更多"
+view_all = "查看全部"

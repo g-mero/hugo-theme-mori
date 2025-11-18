@@ -1,0 +1,17 @@
+# Friends Extended - More friends in same group
+name: "Friends" # Same name will be merged
+name_zh-cn: "朋友们"
+weight: 1
+
+items:
+  - name: "Tech Blog"
+    url: "https://techblog.example.com"
+    description: "A technology focused blog"
+    description_zh-cn: "一个专注技术的博客"
+    weight: 3
+
+  - name: "Design Portfolio"
+    url: "https://design.example.com"
+    description: "Creative design showcase"
+    description_zh-cn: "创意设计展示"
+    weight: 4

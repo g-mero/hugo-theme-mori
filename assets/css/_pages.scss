@@ -151,6 +151,132 @@
   }
 }
 
+// Links Section (Homepage)
+.links {
+  margin-top: $spacing-2xl;
+
+  h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-xs;
+    border-bottom: 1px solid $color-border;
+
+    @include desktop {
+      font-size: 1.1rem;
+    }
+  }
+
+  @include desktop {
+    margin-top: $spacing-xl;
+  }
+}
+
+// Links Page (Full page)
+.links-page {
+  margin-top: $spacing-lg;
+
+  @include desktop {
+    margin-top: $spacing-md;
+  }
+}
+
+.links-group {
+  margin-bottom: $spacing-xl;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include desktop {
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.links-group-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 $spacing-md 0;
+  padding-bottom: $spacing-xs;
+  border-bottom: 1px solid $color-border;
+  color: $color-text-dark;
+
+  @include desktop {
+    font-size: 1rem;
+    margin-bottom: $spacing-sm;
+  }
+}
+
+.links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: $spacing-md $spacing-sm;
+  align-items: stretch;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: $spacing-sm;
+  }
+}
+
+.link-item {
+  margin: 0;
+  display: flex;
+}
+
+.link-url {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: $spacing-sm;
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  color: $color-text-dark;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: $color-text-dark;
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+
+  @include desktop {
+    padding: $spacing-xs $spacing-sm;
+    min-height: 70px;
+  }
+}
+
+.link-name {
+  display: block;
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @include desktop {
+    font-size: 0.95rem;
+  }
+}
+
+.link-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  font-size: $font-size-small;
+  color: $color-text-light;
+  line-height: 1.4;
+
+  @include desktop {
+    font-size: $font-size-smaller;
+  }
+}
+
 // Article Header & Meta
 .article-header {
   margin-bottom: $spacing-xl;

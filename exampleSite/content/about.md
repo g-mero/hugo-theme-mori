@@ -6,15 +6,15 @@ draft = false
 
 ## About This Theme
 
-**Mori** is a minimal and clean Hugo theme. It focuses on simplicity and readability, making it perfect for personal blogs and portfolios.
+**Mori** is a minimal Hugo theme. It focuses on simplicity and readability, and is easy to internationalize (i18n).
 
 ### Features
 
-- Clean and minimal design
+- Clean and elegant design
 - Responsive layout
 - Easy to customize
 - Fast and lightweight
-- Markdown support
+- Multilingual support (i18n)
 
 ### Philosophy
 

@@ -9,6 +9,11 @@ pageRef = '/about'
 weight = 20
 
 [[main]]
-name = 'posts'
+name = 'writings'
 pageRef = '/posts'
 weight = 30
+
+[[main]]
+name = 'links'
+pageRef = '/links'
+weight = 40

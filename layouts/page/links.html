@@ -1,0 +1,65 @@
+{{ define "main" }}
+  <section class="section-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}
+      <div class="section-description">
+        {{ . }}
+      </div>
+    {{ end }}
+  </section>
+
+  {{ with site.Data.links }}
+    {{/* Collect all groups from data/links/ directory */}}
+    {{ $allGroups := slice }}
+    {{ range $key, $value := . }}
+      {{ if ne $key "settings" }}
+        {{ $allGroups = $allGroups | append $value }}
+      {{ end }}
+    {{ end }}
+
+    {{/* Merge groups with same name */}}
+    {{ $groupsMap := dict }}
+    {{ range $allGroups }}
+      {{ $groupName := .name }}
+      {{ if isset $groupsMap $groupName }}
+        {{/* Merge items into existing group */}}
+        {{ $existing := index $groupsMap $groupName }}
+        {{ $mergedItems := $existing.items | append .items }}
+        {{ $groupsMap = merge $groupsMap (dict $groupName (merge $existing (dict "items" $mergedItems))) }}
+      {{ else }}
+        {{/* Add new group */}}
+        {{ $groupsMap = merge $groupsMap (dict $groupName .) }}
+      {{ end }}
+    {{ end }}
+
+    {{/* Convert map back to slice */}}
+    {{ $groups := slice }}
+    {{ range $key, $value := $groupsMap }}
+      {{ $groups = $groups | append $value }}
+    {{ end }}
+
+    {{ $groups := sort $groups "weight" "asc" }}
+
+    <section class="links-page">
+      {{ range $groups }}
+        <div class="links-group">
+          <h2 class="links-group-name">{{ partial "get-localized.html" (dict "data" . "field" "name") }}</h2>
+          {{ $items := sort .items "weight" "asc" }}
+          <ul class="links-list">
+            {{ range $items }}
+              <li class="link-item">
+                <a class="link-url" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+                  <span class="link-name">{{ partial "get-localized.html" (dict "data" . "field" "name") }}</span>
+                  {{ $description := partial "get-localized.html" (dict "data" . "field" "description") }}
+                  {{ with $description }}
+                    <span class="link-description">{{ . }}</span>
+                  {{ end }}
+                </a>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      {{ end }}
+    </section>
+  {{ end }}
+{{ end }}
