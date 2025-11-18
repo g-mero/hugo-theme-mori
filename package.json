@@ -41,13 +41,13 @@
     "typescript": "^5.9.3"
   },
   "lint-staged": {
-    "assets/css/**/*.scss": [
+    "assets/css/**/*.{scss,css}": [
       "pnpm build:css",
-      "git add assets/css/compiled"
+      "git add assets/css/compiled/*.css"
     ],
-    "assets/js/**/*.ts": [
+    "assets/js/**/*.{ts,js}": [
       "pnpm build:js",
-      "git add assets/js/compiled"
+      "git add assets/js/compiled/*.js"
     ]
   }
 }

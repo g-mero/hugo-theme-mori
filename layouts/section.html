@@ -1,18 +1,26 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
+  <section class="section-header">
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}
+      <div class="section-description">
+        {{ . }}
+      </div>
+    {{ end }}
+  </section>
 
   {{ $paginator := .Paginate .Pages }}
-  <ul class="posts-list">
-    {{ range $paginator.Pages }}
-      <li class="post-item">
-        <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">
-          {{ .Date.Format "2006-01-02" }}
-        </time>
-        <a class="post-link" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-      </li>
-    {{ end }}
-  </ul>
+  <section class="section-posts">
+    <ul class="posts-list">
+      {{ range $paginator.Pages }}
+        <li class="post-item">
+          <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">
+            {{ .Date.Format "2006-01-02" }}
+          </time>
+          <a class="post-link" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        </li>
+      {{ end }}
+    </ul>
 
-  {{ partial "pagination.html" $paginator }}
+    {{ partial "pagination.html" $paginator }}
+  </section>
 {{ end }}

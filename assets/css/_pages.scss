@@ -36,6 +36,58 @@
   }
 }
 
+// Section Page (Posts List)
+.section-header {
+  margin-bottom: $spacing-xl;
+
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0 0 $spacing-md 0;
+    line-height: 1.3;
+
+    @include desktop {
+      font-size: 1.5rem;
+      margin-bottom: $spacing-sm;
+    }
+
+    @include mobile {
+      font-size: 1.3rem;
+    }
+  }
+
+  @include desktop {
+    margin-bottom: $spacing-lg;
+  }
+}
+
+.section-description {
+  font-size: 1rem;
+  line-height: $line-height-relaxed;
+  color: $color-text-light;
+  margin-bottom: $spacing-md;
+
+  p {
+    margin: 0 0 1em 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @include desktop {
+    font-size: 0.95rem;
+  }
+}
+
+.section-posts {
+  margin-top: $spacing-lg;
+
+  @include desktop {
+    margin-top: $spacing-md;
+  }
+}
+
 .posts-list {
   list-style: none;
   padding: 0;
@@ -79,6 +131,23 @@
 
   @include tablet {
     font-size: 1rem;
+  }
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: $spacing-md;
+  color: $color-text-light;
+  font-size: $font-size-small;
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    color: $color-text-dark;
+    border-bottom-color: $color-text-dark;
+  }
+
+  @include desktop {
+    font-size: $font-size-smaller;
   }
 }
 
