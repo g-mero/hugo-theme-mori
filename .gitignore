@@ -18,3 +18,11 @@ coverage/
 # Hugo files
 .hugo_build.lock
 hugo_stats.json
+
+
+# Mori generated files
+exampleSite/config/_default
+
+
+# dev generated files
+assets/js/compiled/*.js.map
