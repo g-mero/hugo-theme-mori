@@ -52,6 +52,39 @@ git clone https://github.com/g-mero/hugo-theme-mori.git
 
 See `exampleSite/hugo.toml` for an example configuration.
 
+### Extending the Theme
+
+#### Custom Head Content
+
+To add custom content to the `<head>` tag (e.g., custom analytics, meta tags):
+
+1. Create `layouts/_partials/extend-head.html` in your site root
+2. Add your custom HTML content
+
+Example:
+
+```html
+<!-- Custom analytics -->
+<script async src="https://cdn.example.com/analytics.js"></script>
+```
+
+#### Custom Footer Content
+
+To extend the footer with additional content (e.g., ICP number, additional links):
+
+1. Create `layouts/_partials/extend-footer.html` in your site root
+2. Add your custom HTML content
+
+Example:
+
+```html
+<p>
+  <a href="https://beian.miit.gov.cn/">ICP: 12345678</a>
+</p>
+```
+
+See `exampleSite/layouts/_partials/extend-footer.html` for a full example.
+
 ### Syntax Highlighting
 
 This theme uses Chroma for syntax highlighting. The default style is GitHub.

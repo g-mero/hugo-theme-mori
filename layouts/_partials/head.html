@@ -63,7 +63,7 @@
 {{ partialCached "head/js.html" . }}
 
 {{- /* Extend head - for custom analytics, etc. */ -}}
-{{- if templates.Exists "partials/extend-head.html" }}
+{{- if templates.Exists "_partials/extend-head.html" }}
   {{ partialCached "extend-head.html" .Site }}
 {{- end }}
 

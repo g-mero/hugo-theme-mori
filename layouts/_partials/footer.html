@@ -1,3 +1,12 @@
 <footer class="footer">
-  <p>&copy; {{ now.Year }} {{ site.Title }}. All rights reserved.</p>
+  {{- if site.Copyright }}
+    <p>{{ site.Copyright }}</p>
+  {{- else }}
+    <p>&copy; {{ now.Year }} {{ site.Title }}. All rights reserved.</p>
+  {{- end }}
+
+  {{- /* Extend footer - for custom content like ICP number, etc. */ -}}
+  {{- if templates.Exists "_partials/extend-footer.html" }}
+      {{ partialCached "extend-footer.html" .Site }}
+  {{- end }}
 </footer>
