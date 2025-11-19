@@ -1,6 +1,6 @@
 # Language configuration
 [en]
-languageCode = 'en-US'
+languageCode = 'en'
 languageName = 'English'
 title = 'Mori'
 weight = 1

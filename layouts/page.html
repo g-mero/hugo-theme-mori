@@ -27,4 +27,8 @@
       </div>
     {{ end }}
   </article>
+
+  {{ if templates.Exists "_partials/after-article.html" }}
+    {{ partialCached "after-article.html" . }}
+  {{ end }}
 {{ end }}

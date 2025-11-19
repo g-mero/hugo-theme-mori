@@ -18,6 +18,7 @@ html {
   line-height: $line-height-base;
   scrollbar-width: thin;
   scrollbar-gutter: stable;
+  scrollbar-color: $color-border-dark transparent;
 
   @include mobile {
     font-size: 15px;
