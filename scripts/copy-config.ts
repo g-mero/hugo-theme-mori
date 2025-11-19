@@ -1,4 +1,11 @@
-import { copyFileSync, existsSync, mkdirSync, readdirSync, statSync } from "fs";
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  statSync,
+  rmSync,
+} from "fs";
 import { join } from "path";
 
 /**
@@ -15,10 +22,19 @@ function copyConfig() {
     return;
   }
 
-  // Ensure target directory exists
-  if (!existsSync(targetConfigDir)) {
-    mkdirSync(targetConfigDir, { recursive: true });
+  // Clear target directory if it exists
+  if (existsSync(targetConfigDir)) {
+    try {
+      rmSync(targetConfigDir, { recursive: true, force: true });
+      console.log("✓ Cleared target config directory");
+    } catch (error) {
+      console.error("✗ Failed to clear target directory:", error);
+      process.exit(1);
+    }
   }
+
+  // Recreate target directory
+  mkdirSync(targetConfigDir, { recursive: true });
 
   // Read all files in the source directory
   const files = readdirSync(sourceConfigDir);

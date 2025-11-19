@@ -312,6 +312,28 @@
   }
 }
 
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: $spacing-xs;
+  flex-wrap: wrap;
+  font-size: $font-size-small;
+  color: $color-text-lighter;
+  font-family: $font-family-mono;
+
+  @include mobile {
+    font-size: $font-size-smaller;
+  }
+}
+
+.article-separator {
+  opacity: 0.6;
+}
+
+.article-lastmod {
+  color: $color-text-lighter;
+}
+
 .article-content {
   margin-bottom: $spacing-xl;
 

@@ -183,14 +183,38 @@ article {
   }
 
   // Images
+  figure {
+    margin: 1.5em 0;
+    padding: 0;
+
+    @include desktop {
+      @include full-bleed;
+      margin-left: -$spacing-md;
+      margin-right: -$spacing-md;
+    }
+  }
+
   img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin: 1.5em 0;
+    margin: 0 auto;
+  }
+
+  figcaption {
+    margin-top: 0.8em;
+    padding: 0 $spacing-sm;
+    font-size: 0.9em;
+    color: $color-text-lighter;
+    text-align: center;
+    line-height: 1.6;
 
     @include desktop {
-      @include full-bleed;
+      padding: 0 $spacing-md;
+    }
+
+    p {
+      margin: 0;
     }
   }
 
@@ -229,6 +253,15 @@ article {
 
     tbody tr:last-child td {
       border-bottom: none;
+    }
+  }
+
+  a {
+    opacity: 0.675;
+
+    &:hover {
+      border-bottom-color: $color-main;
+      opacity: 0.875;
     }
   }
 }

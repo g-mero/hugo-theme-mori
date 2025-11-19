@@ -21,6 +21,8 @@ Use `#` to create headings, the number indicates the level.
 
 [This is a link](https://example.com)
 
+![This is an image](/autumn-7493439_1280.jpg)
+
 ## Code
 
 Inline code: `const x = 1;`

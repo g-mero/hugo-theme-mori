@@ -1,0 +1,34 @@
+{{- $urlStr := .Destination | safeURL -}}
+{{- $url := urls.Parse $urlStr -}}
+{{- $altText := .Text -}}
+{{- $caption := .Title -}}
+{{- $isRemote := findRE "^(https?|data)" $url.Scheme -}}
+{{- $resource := "" -}}
+
+{{- if not $isRemote -}}
+  {{- $resource = or ($.Page.Resources.GetMatch $urlStr) (resources.Get $urlStr) -}}
+{{- end -}}
+
+<figure
+  {{- range $k, $v := .Attributes -}}
+    {{- if $v -}}
+      {{- printf " %s=%q" $k ($v | transform.HTMLEscape) | safeHTMLAttr -}}
+    {{- end -}}
+  {{- end -}}>
+  <img
+    class="my-0 rounded-md"
+    loading="lazy"
+    decoding="async"
+    alt="{{ $altText }}"
+    {{ if $resource -}}
+      {{ with $resource.Width }}width="{{ . }}"{{ end }}
+      {{ with $resource.Height }}height="{{ . }}"{{ end }}
+      src="{{ $resource.RelPermalink }}"
+    {{- else -}}
+      src="{{ $urlStr }}"
+    {{- end }}>
+
+  {{- if $caption -}}
+    <figcaption>{{ $caption | markdownify }}</figcaption>
+  {{- end -}}
+</figure>

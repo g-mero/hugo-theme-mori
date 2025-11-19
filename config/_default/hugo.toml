@@ -1,13 +1,6 @@
 [pagination]
 pagerSize = 10
 
-# Language configuration
-[languages]
-[languages.en]
-languageCode = 'en-US'
-languageName = 'English'
-title = 'Mori'
-weight = 1
 
 [markup.highlight]
 noClasses = false

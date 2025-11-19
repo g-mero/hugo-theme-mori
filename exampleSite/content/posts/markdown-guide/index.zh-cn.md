@@ -1,6 +1,7 @@
 +++
 title = 'Markdown 语法指南'
 date = 2024-11-17T10:00:00+08:00
+lastmod = 2025-11-19
 draft = false
 tags = ['Markdown', '教程']
 +++
@@ -20,6 +21,10 @@ tags = ['Markdown', '教程']
 ## 链接和图片
 
 [这是一个链接](https://example.com)
+
+![本地图片](/autumn-7493439_1280.jpg "这是一张本地图片")
+
+![远程图片](https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80 "这是一张远程图片")
 
 ## 代码
 
