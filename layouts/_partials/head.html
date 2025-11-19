@@ -1,5 +1,70 @@
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+{{- with .Site.Language.Params.htmlCode | default .Site.LanguageCode }}
+  <meta http-equiv="content-language" content="{{ . }}">
+{{- end }}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+{{- /* Title */ -}}
+{{- if .IsHome }}
+  <title>{{ .Site.Title | emojify }}</title>
+  <meta name="title" content="{{ .Site.Title | emojify }}">
+{{- else }}
+  <title>{{ .Title | emojify }} &middot; {{ .Site.Title | emojify }}</title>
+  <meta name="title" content="{{ .Title | emojify }} &middot; {{ .Site.Title | emojify }}">
+{{- end }}
+
+{{- /* Description */ -}}
+{{- with (.Params.description | default .Description) | default ((.Summary | plainify) | truncate 160) }}
+  <meta name="description" content="{{ . }}">
+{{- end }}
+
+{{- /* Keywords */ -}}
+{{- with .Params.keywords | default .Params.tags | default .Site.Params.keywords }}
+  <meta name="keywords" content="{{ delimit . ", " }}">
+{{- end }}
+
+{{- /* Robots */ -}}
+{{- with .Params.robots | default .Site.Params.robots }}
+  <meta name="robots" content="{{ . }}">
+{{- end }}
+
+{{- /* Canonical */ -}}
+<link rel="canonical" href="{{ .Permalink }}">
+
+{{- /* Alternative Output Formats */ -}}
+{{- range .AlternativeOutputFormats }}
+  <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .RelPermalink }}" title="{{ $.Site.Title }}">
+{{- end }}
+
+{{- /* Authors */ -}}
+{{- $authors := partial "get-authors.html" . }}
+{{- if gt (len $authors) 0 }}
+  {{- range $authors }}
+    <meta name="author" content="{{ .name }}">
+  {{- end }}
+{{- end }}
+
+{{- /* Alternate Language Links */ -}}
+{{- if .IsTranslated }}
+  {{- range .AllTranslations }}
+    <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}">
+  {{- end }}
+{{- end }}
+
+{{- /* Social: Open Graph & Twitter Card */ -}}
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+
+{{- /* Favicon */ -}}
+<link rel="icon" href="{{ "favicon.ico" | absURL }}" type="image/x-icon">
+
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
+
+{{- /* Extend head - for custom analytics, etc. */ -}}
+{{- if templates.Exists "partials/extend-head.html" }}
+  {{ partialCached "extend-head.html" .Site }}
+{{- end }}
+
+

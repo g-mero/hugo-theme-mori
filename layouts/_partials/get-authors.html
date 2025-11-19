@@ -1,0 +1,42 @@
+{{- /*
+  Get article authors from page context.
+  Params:
+    - page: the page context (usually passed as .)
+
+  Returns:
+    - slice of author objects with name, bio, email, website, etc.
+*/ -}}
+
+{{- $page := . }}
+{{- $authorList := or $page.Params.authors $page.Params.author }}
+{{- $authorNames := slice }}
+
+{{- /* Convert single author to slice */ -}}
+{{- if eq (printf "%T" $authorList) "string" }}
+  {{- $authorNames = slice $authorList }}
+{{- else if reflect.IsSlice $authorList }}
+  {{- $authorNames = $authorList }}
+{{- end }}
+
+{{- /* If no authors, find default author */ -}}
+{{- if eq (len $authorNames) 0 }}
+  {{- range $name, $author := $page.Site.Data.authors }}
+    {{- if $author.default }}
+      {{- $authorNames = slice $name }}
+      {{- break }}
+    {{- end }}
+  {{- end }}
+{{- end }}
+
+{{- /* Build author objects */ -}}
+{{- $authors := slice }}
+{{- range $authorName := $authorNames }}
+  {{- $authorData := index $page.Site.Data.authors $authorName }}
+  {{- if $authorData }}
+    {{- $authors = $authors | append (merge (dict "id" $authorName) $authorData) }}
+  {{- end }}
+{{- end }}
+
+{{- /* Return authors slice */ -}}
+{{- return $authors }}
+
