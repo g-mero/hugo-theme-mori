@@ -35,13 +35,28 @@
       {{ .Content }}
     </div>
 
-    {{ with .Params.tags }}
-      <div class="article-tags">
-        {{ range . }}
-          <a href="{{ "tags" | relURL }}/{{ . | urlize }}/" class="tag">#{{ . }}</a>
-        {{ end }}
-      </div>
-    {{ end }}
+    <div class="article-footer">
+      {{ with .Params.tags }}
+        <div class="article-tags">
+          {{ range . }}
+            <a href="{{ "tags" | relURL }}/{{ . | urlize }}/" class="tag">#{{ . }}</a>
+          {{ end }}
+        </div>
+      {{ end }}
+
+      {{ $section := .Section }}
+      {{ $next := (where .Site.RegularPages "Section" $section).Next . }}
+      {{ $prev := (where .Site.RegularPages "Section" $section).Prev . }}
+      {{ if or $next $prev }}
+        <nav class="article-nav">
+          {{ if $next }}
+            <a href="{{ $next.RelPermalink }}" class="article-nav-link article-nav-next" title="{{ $next.Title }}">→ {{ $next.Title }}</a>
+          {{ else if $prev }}
+            <a href="{{ $prev.RelPermalink }}" class="article-nav-link article-nav-prev" title="{{ $prev.Title }}">← {{ $prev.Title }}</a>
+          {{ end }}
+        </nav>
+      {{ end }}
+    </div>
   </article>
 
   {{ if templates.Exists "_partials/after-article.html" }}
