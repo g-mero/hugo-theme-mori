@@ -109,12 +109,6 @@ When user asks questions:
 - ❌ Create guide/tutorial files
 - ❌ Create example files unless specifically asked
 
-**Only create documentation when user says:**
-
-- "create a guide/documentation for..."
-- "write documentation about..."
-- "add this to documentation"
-
 ## Common Mistakes
 
 ❌ Edit `app.scss` directly (import-only)  

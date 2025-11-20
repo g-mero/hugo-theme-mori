@@ -389,3 +389,90 @@
     padding-top: $spacing-sm;
   }
 }
+
+// ==========================================
+// 404 Error Page
+// ==========================================
+
+.error-404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: $spacing-xl 0;
+}
+
+.error-404-content {
+  text-align: center;
+}
+
+.error-404-number {
+  font-size: 6rem;
+  font-weight: 700;
+  color: $color-text-lighter;
+  opacity: 0.4;
+  line-height: 1;
+  margin-bottom: $spacing-md;
+
+  @include mobile {
+    font-size: 4rem;
+  }
+}
+
+.error-404-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: $spacing-md;
+  color: $color-text-dark;
+
+  @include mobile {
+    font-size: 1.4rem;
+  }
+}
+
+.error-404-message {
+  font-size: $font-size-small;
+  color: $color-text-light;
+  margin-bottom: $spacing-2xl;
+
+  a {
+    color: $color-main;
+    border: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.error-404-suggestions {
+  margin-top: $spacing-2xl;
+  padding-top: $spacing-xl;
+  border-top: 1px solid $color-border;
+}
+
+.error-404-suggestions-title {
+  font-size: $font-size-small;
+  color: $color-text-lighter;
+  margin-bottom: $spacing-md;
+}
+
+.error-404-suggestions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    margin-bottom: $spacing-sm;
+  }
+
+  a {
+    color: $color-main;
+    border: none;
+    font-size: $font-size-small;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

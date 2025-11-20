@@ -1,8 +1,12 @@
 # Page sections
 recent_posts = "Writing"
 links = "Links"
-all_links = "All Links"
 
 # Common
 read_more = "Read more"
 view_all = "View all"
+
+# 404 Page
+page_not_found = "Page Not Found"
+back_to_home = "← Back to Home"
+maybe_you_want = "Maybe you're looking for:"
