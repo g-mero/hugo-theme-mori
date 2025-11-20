@@ -3,11 +3,12 @@
   "private": "true",
   "description": "only for scripts",
   "scripts": {
-    "dev": "pnpm run dev:copy-config && concurrently -k -n \"CSS,JS,HUGO\" -c \"gray,blue,green\" \"pnpm:dev:css\" \"pnpm:dev:js\" \"pnpm:serve\"",
+    "dev": "pnpm run dev:copy-config && concurrently -k -n \"UNOCSS,CSS,JS,HUGO\" -c \"white,gray,blue,green\" \"pnpm:unocss:watch\" \"pnpm:dev:css\" \"pnpm:dev:js\" \"pnpm:serve\"",
     "dev:copy-config": "tsx scripts/copy-config.ts",
     "serve": "hugo server -s exampleSite --gc --themesDir ../..",
-    "build:css": "tsx scripts/build-css.ts",
+    "build:css": "unocss && tsx scripts/build-css.ts",
     "build:js": "tsx scripts/build-js.ts",
+    "unocss:watch": "unocss --watch",
     "dev:css": "tsx scripts/build-css.ts dev watch",
     "dev:js": "tsx scripts/build-js.ts dev",
     "prepare": "husky"
@@ -29,6 +30,7 @@
   ],
   "devDependencies": {
     "@types/node": "^24.10.1",
+    "@unocss/cli": "^66.5.7",
     "browserslist": "^4.28.0",
     "chokidar": "^4.0.3",
     "concurrently": "^9.2.1",
@@ -38,10 +40,11 @@
     "sass-embedded": "^1.93.3",
     "tsdown": "^0.16.5",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "unocss": "^66.5.7"
   },
   "lint-staged": {
-    "assets/css/**/*.{scss,css}": [
+    "{assets/css/**/*.{scss,css},layouts/**/*.html}": [
       "pnpm build:css",
       "git add assets/css/compiled/*.css"
     ],

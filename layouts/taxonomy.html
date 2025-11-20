@@ -1,22 +1,22 @@
 {{ define "main" }}
-  <section class="section-header">
-    <h1>{{ .Title }}</h1>
+  <section class="mb-lg sm:mb-xl">
+    <h1 class="fs-base font-600 m-0 mb-md leading-130 mb-sm sm:fs-xl sm:mb-md">{{ .Title }}</h1>
     {{ with .Content }}
-      <div class="section-description">
+      <div class="prose fs-sm leading-relaxed c-fg3 mb-md sm:fs-base">
         {{ . }}
       </div>
     {{ end }}
   </section>
 
   {{ $paginator := .Paginate .Pages }}
-  <section class="section-posts">
-    <ul class="posts-list">
+  <section class="mt-md sm:mt-lg">
+    <ul class="list-none p-0 m-0">
       {{ range $paginator.Pages }}
-        <li class="post-item">
-          <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">
+        <li class="flex flex-col gap-1 mb-md sm:flex-row sm:items-baseline sm:gap-sm sm:mb-sm">
+          <time class="fs-xs c-fg4 font-mono sm:fs-sm sm:flex-shrink-0 sm:min-w-100px" datetime="{{ .Date.Format "2006-01-02" }}">
             {{ .Date.Format "2006-01-02" }}
           </time>
-          <a class="post-link" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+          <a class="flex-1 c-fg2 border-b border-fg2 hover:border-transparent" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
         </li>
       {{ end }}
     </ul>

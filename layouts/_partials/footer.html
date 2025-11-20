@@ -1,8 +1,8 @@
-<footer class="footer">
+<footer class="mt-2xl md:mt-xl pt-lg md:pt-md border-t border-bd1 c-fg4 fs-sm md:fs-xs">
   {{- if site.Copyright }}
-    <p>{{ site.Copyright }}</p>
+    <p class="m-0">{{ site.Copyright }}</p>
   {{- else }}
-    <p>&copy; {{ now.Year }} {{ site.Title }}. All rights reserved.</p>
+    <p class="m-0">&copy; {{ now.Year }} {{ site.Title }}. All rights reserved.</p>
   {{- end }}
 
   {{- /* Extend footer - for custom content like ICP number, etc. */ -}}

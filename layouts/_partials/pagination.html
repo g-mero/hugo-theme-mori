@@ -1,36 +1,20 @@
 {{ $paginator := . }}
 {{ if gt $paginator.TotalPages 1 }}
-<nav class="pagination">
-  <ul>
+<nav class="mt-xl md:mt-lg pt-lg md:pt-md border-t border-bd1">
+  <ul class="list-none p-0 m-0 flex justify-center items-center flex-wrap gap-md">
     {{ if $paginator.HasPrev }}
-    <li class="pagination-item">
-      <a href="{{ $paginator.Prev.URL }}" class="pagination-link">←</a>
+    <li class="inline-block">
+      <a href="{{ $paginator.Prev.URL }}" class="inline-block px-xs py-xs c-fg2 no-underline hover:opacity-70">←</a>
     </li>
     {{ end }}
 
     {{ $currentPage := $paginator.PageNumber }}
     {{ $totalPages := $paginator.TotalPages }}
-
-    {{ range $paginator.Pagers }}
-      {{ $page := .PageNumber }}
-      {{ if or (eq $page 1) (eq $page $totalPages) (and (ge $page (sub $currentPage 2)) (le $page (add $currentPage 2))) }}
-        <li class="pagination-item">
-          {{ if eq $page $currentPage }}
-            <span class="pagination-link active">{{ $page }}</span>
-          {{ else }}
-            <a href="{{ .URL }}" class="pagination-link">{{ $page }}</a>
-          {{ end }}
-        </li>
-      {{ else if or (eq $page (sub $currentPage 3)) (eq $page (add $currentPage 3)) }}
-        <li class="pagination-item">
-          <span class="pagination-ellipsis">…</span>
-        </li>
-      {{ end }}
-    {{ end }}
+    <li class="inline-block c-fg4 fs-sm">{{ $currentPage }} / {{ $totalPages }}</li>
 
     {{ if $paginator.HasNext }}
-    <li class="pagination-item">
-      <a href="{{ $paginator.Next.URL }}" class="pagination-link">→</a>
+    <li class="inline-block">
+      <a href="{{ $paginator.Next.URL }}" class="inline-block px-xs py-xs c-fg2 no-underline hover:opacity-70">→</a>
     </li>
     {{ end }}
   </ul>

@@ -1,0 +1,42 @@
+$colors-light: (
+  "fg1": #333,
+  "fg2": #111,
+  "fg3": #666,
+  "fg4": #999,
+  "bg1": #fff,
+  "bg2": #f9f9f9,
+  "bd1": #eee,
+  "bd2": #ddd,
+  "code": #f5f5f5,
+  "main": #007acc
+);
+
+$colors-dark: (
+  "fg1": #ccc,
+  "fg2": #e0e0e0,
+  "fg3": #999,
+  "fg4": #666,
+  "bg1": #1e1e1e,
+  "bg2": #2d2d2d,
+  "bd1": #404040,
+  "bd2": #555,
+  "code": #2d2d2d
+);
+
+$fs-ramp: (
+  "xs": 12px,
+  "sm": 14px,
+  "base": 16px,
+  "md": 18px,
+  "lg": 20px,
+  "xl": 24px,
+  "2xl": 28px,
+  "3xl": 32px,
+  "4xl": 40px
+);
+
+$lh-ramp: (
+  "tight": 1.25,
+  "base": 1.5,
+  "relaxed": 1.75
+);

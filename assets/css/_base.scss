@@ -2,8 +2,41 @@
 // Base Styles & Reset
 // ==========================================
 
-@use "variables" as *;
 @use "mixins" as *;
+@use "vars";
+
+// CSS Custom Properties for theme customization
+:root {
+  // Colors (Light mode defaults)
+  /* colors */
+  @each $name, $color in vars.$colors-light {
+    --color-#{$name}: #{$color};
+  }
+
+  @each $name, $lineHeight in vars.$lh-ramp {
+    --lh-#{$name}: #{$lineHeight};
+  }
+
+  @each $name, $fontSize in vars.$fs-ramp {
+    --fs-#{$name}: #{$fontSize};
+  }
+
+  // Typography
+  --font-mono: "Menlo", "Meslo LG", monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+
+  // Transitions
+  --transition-base: all 0.2s ease;
+}
+
+// Dark mode
+@media (prefers-color-scheme: dark) {
+  :root {
+    @each $name, $color in vars.$colors-dark {
+      --color-#{$name}: #{$color};
+    }
+  }
+}
 
 *,
 ::before,
@@ -11,42 +44,39 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border-color: var(--color-bd1);
+  border-style: solid;
+  border-width: 0;
 }
 
 html {
-  font-size: $font-size-base;
-  line-height: $line-height-base;
+  font-size: 15px;
+  line-height: 1.5;
   scrollbar-width: thin;
   scrollbar-gutter: stable;
-  scrollbar-color: $color-border-dark transparent;
+  scrollbar-color: var(--color-bd2) transparent;
 
-  @include mobile {
-    font-size: 15px;
+  @include desktop {
+    font-size: 16px;
   }
 }
 
 body {
-  font-family: $font-family-base;
-  color: $color-text;
-  background-color: $color-background;
-  margin: 0;
-  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--color-fg1);
+  background-color: var(--color-bg1);
   overflow-x: hidden;
 }
 
 a {
-  color: $color-text-dark;
+  color: var(--color-fg2);
   text-decoration: none;
-  border-bottom: 1px solid $color-text-dark;
-  transition: $transition-base;
-
-  &:hover {
-    border-bottom-color: transparent;
-  }
+  transition: var(--transition-base);
+  border-color: var(--color-fg2);
 }
 
 hr {
   border: none;
-  border-top: 1px solid $color-border;
+  border-top: 1px solid var(--color-bd1);
   margin: 2em 0;
 }

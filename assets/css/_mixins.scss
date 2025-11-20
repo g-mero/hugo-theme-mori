@@ -2,23 +2,14 @@
 // Mixins
 // ==========================================
 
-@use "variables" as *;
-
-// Responsive breakpoints
-@mixin mobile {
-  @media (max-width: $breakpoint-mobile) {
-    @content;
-  }
-}
-
 @mixin tablet {
-  @media (max-width: $breakpoint-tablet) {
+  @media (min-width: 600px) {
     @content;
   }
 }
 
 @mixin desktop {
-  @media (max-width: $breakpoint-desktop) {
+  @media (min-width: 768px) {
     @content;
   }
 }
@@ -26,7 +17,7 @@
 // Typography
 @mixin heading-base {
   font-weight: 600;
-  line-height: $line-height-heading;
+  line-height: 1.4;
 }
 
 // Utilities
@@ -36,7 +27,7 @@
 }
 
 @mixin full-bleed {
-  margin-left: -$spacing-md;
-  margin-right: -$spacing-md;
-  max-width: calc(100% + #{$spacing-xl});
+  margin-left: -16px;
+  margin-right: -16px;
+  max-width: calc(100% + #{32px});
 }

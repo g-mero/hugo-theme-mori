@@ -26,3 +26,4 @@ exampleSite/config/_default
 
 # dev generated files
 assets/js/compiled/*.js.map
+assets/css/_unocss.css

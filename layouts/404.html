@@ -1,22 +1,22 @@
 {{ define "main" }}
-<div class="error-404">
-  <div class="error-404-content">
-    <div class="error-404-number">404</div>
-    <h1 class="error-404-title">
+<div class="flex items-center justify-center min-h-60vh p-y-xl">
+  <div class="text-center">
+    <div class="fs-4xl md:text-6xl font-700 c-fg4 opacity-40 lh-tight mb-md">404</div>
+    <h1 class="fs-lg md:fs-2xl font-600 mb-md c-fg2">
       {{ i18n "page_not_found" | default "Page Not Found" }}
     </h1>
-    <p class="error-404-message">
-      <a href="{{ "/" | relLangURL }}">{{ i18n "back_to_home" | default "← Back to Home" }}</a>
+    <p class="fs-sm c-fg3 mb-2xl">
+      <a href="{{ "/" | relLangURL }}" class="c-main hover:opacity-70">{{ i18n "back_to_home" | default "← Back to Home" }}</a>
     </p>
 
-    <div class="error-404-suggestions">
-      <p class="error-404-suggestions-title">
+    <div class="mt-2xl pt-xl border-t border-bd1">
+      <p class="fs-sm c-fg4 mb-md">
         {{ i18n "maybe_you_want" | default "Maybe you're looking for:" }}
       </p>
-      <ul class="error-404-suggestions-list">
+      <ul class="list-none p-0 m-0">
         {{ range first 2 site.RegularPages }}
-          <li>
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <li class="mb-sm">
+            <a href="{{ .RelPermalink }}" class="c-main fs-sm hover:opacity-70">{{ .Title }}</a>
           </li>
         {{ end }}
       </ul>

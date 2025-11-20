@@ -2,44 +2,44 @@
   {{- $authors := partial "get-authors.html" . }}
 
   <article>
-    <header class="article-header">
-      <h1>{{ .Title }}</h1>
-      <div class="article-meta">
+    <header class="mb-lg sm:mb-xl">
+      <h1 class="fs-lg font-600 m-0 mb-xs lh-tight break-all sm:fs-2xl">{{ .Title }}</h1>
+      <div class="flex items-center flex-wrap fs-xs c-fg4 font-mono sm:fs-sm">
         {{- if gt (len $authors) 0 }}
-          <span class="article-authors">
+          <span class="flex whitespace-nowrap">
             {{- range $index, $author := $authors -}}
               {{- if $author.website }}
-                <a href="{{ $author.website }}" class="article-author" target="_blank" rel="noopener noreferrer">{{ $author.name }}</a>
+                <a href="{{ $author.website }}" class="c-fg3 font-500 no-underline hover:underline border-none" target="_blank" rel="noopener noreferrer">{{ $author.name }}</a>
               {{- else }}
-                <span class="article-author">{{ $author.name }}</span>
+                <span class="c-fg3 font-500">{{ $author.name }}</span>
               {{- end }}
-              {{- if lt (add $index 1) (len $authors) }}<span class="article-separator">,</span>{{ end }}
+              {{- if lt (add $index 1) (len $authors) }}<span class="opacity-60">,</span>{{ end }}
             {{- end }}
           </span>
-          <span class="article-separator">·</span>
+          <span class="opacity-60">·</span>
         {{- end }}
 
-        <time class="article-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+        <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
           {{ .Date.Format "Jan 2, 2006" }}
         </time>
         {{- if ne (.Date.Format "2006-01-02") (.Lastmod.Format "2006-01-02") }}
-          <span class="article-separator">·</span>
-          <time class="article-lastmod" datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+          <span class="opacity-60">·</span>
+          <time datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
             Updated {{ .Lastmod.Format "Jan 2, 2006" }}
           </time>
         {{- end }}
       </div>
     </header>
 
-    <div class="article-content">
+    <div class="mb-lg sm:mb-xl">
       {{ .Content }}
     </div>
 
-    <div class="article-footer">
+    <div class="mt-xl pt-sm b-t b-bd1 flex flex-col items-stretch gap-sm sm:flex-row sm:justify-between sm:items-start sm:pt-md sm:flex-wrap">
       {{ with .Params.tags }}
-        <div class="article-tags">
+        <div class="flex flex-wrap gap-xs items-start">
           {{ range . }}
-            <a href="{{ "tags" | relURL }}/{{ . | urlize }}/" class="tag">#{{ . }}</a>
+            <a href="{{ "tags" | relURL }}/{{ . | urlize }}/" class="inline-block c-fg3 fs-sm b-none hover:c-fg2 truncate">#{{ . }}</a>
           {{ end }}
         </div>
       {{ end }}
@@ -48,11 +48,11 @@
       {{ $next := (where .Site.RegularPages "Section" $section).Next . }}
       {{ $prev := (where .Site.RegularPages "Section" $section).Prev . }}
       {{ if or $next $prev }}
-        <nav class="article-nav">
+        <nav class="flex-shrink-0 text-left max-w-full sm:text-right sm:max-w-50%">
           {{ if $next }}
-            <a href="{{ $next.RelPermalink }}" class="article-nav-link article-nav-next" title="{{ $next.Title }}">→ {{ $next.Title }}</a>
+            <a href="{{ $next.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full overflow-hidden text-ellipsis whitespace-nowrap hover:c-fg2" title="{{ $next.Title }}">→ {{ $next.Title }}</a>
           {{ else if $prev }}
-            <a href="{{ $prev.RelPermalink }}" class="article-nav-link article-nav-prev" title="{{ $prev.Title }}">← {{ $prev.Title }}</a>
+            <a href="{{ $prev.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full overflow-hidden text-ellipsis whitespace-nowrap hover:c-fg2" title="{{ $prev.Title }}">← {{ $prev.Title }}</a>
           {{ end }}
         </nav>
       {{ end }}

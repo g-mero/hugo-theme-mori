@@ -1,11 +1,9 @@
 ﻿/* Mori Theme - Minimal Code Syntax Highlighting */
 
-@use "variables" as *;
-
 /* Code block wrapper */
 .chroma {
-  background-color: $color-code-bg;
-  padding: $spacing-md;
+  background-color: var(--color-code);
+  padding: 16px;
   border-radius: 3px;
   overflow-x: auto;
   font-size: 0.95em;
@@ -15,7 +13,7 @@
 /* Line numbers */
 .chroma .lnt,
 .chroma .ln {
-  color: $color-text-lighter;
+  color: var(--color-fg4);
   user-select: none;
   padding-right: 0.8em;
   margin-right: 0.8em;
@@ -29,7 +27,7 @@
 .chroma .cs,
 .chroma .cp,
 .chroma .cpf {
-  color: $color-text-light;
+  color: var(--color-fg3);
   font-style: italic;
 }
 

@@ -1,23 +1,23 @@
 {{ define "main" }}
   {{ with .Content }}
-    <div class="profile">
+    <div class="prose mb-xl fs-sm lh-relaxed sm:mb-2xl sm:fs-base">
       {{ . }}
     </div>
   {{ end }}
 
   <section class="posts">
-    <h2>{{ i18n "recent_posts" }}</h2>
-    <ul class="posts-list">
+    <h2 class="fs-base font-600 mb-md pb-xs border-b border-bd1 sm:fs-lg">{{ i18n "recent_posts" }}</h2>
+    <ul class="list-none p-0 m-0">
       {{ range first 5 site.RegularPages }}
-        <li class="post-item">
-          <time class="post-date" datetime="{{ .Date.Format "2006-01-02" }}">
+        <li class="flex flex-col gap-1 mb-md sm:flex-row sm:items-baseline sm:gap-sm sm:mb-sm">
+          <time class="fs-xs c-fg4 font-mono sm:fs-sm sm:flex-shrink-0 sm:min-w-100px" datetime="{{ .Date.Format "2006-01-02" }}">
             {{ .Date.Format "2006-01-02" }}
           </time>
-          <a class="post-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <a class="flex-1 c-fg2 border-b border-fg2 hover:border-transparent" href="{{ .RelPermalink }}">{{ .Title }}</a>
         </li>
       {{ end }}
     </ul>
-    <a class="read-more" href="{{ "posts" | relLangURL }}">{{ i18n "read_more" }} →</a>
+    <a class="inline-block mt-md c-fg3 fs-xs hover:c-fg2 hover:b-b sm:fs-sm" href="{{ "posts" | relLangURL }}">{{ i18n "read_more" }} →</a>
   </section>
 
   {{ with site.Data.links }}
@@ -70,12 +70,13 @@
       {{ $groups = sort $groups "weight" "asc" }}
 
       {{ if $groups }}
-      <section class="links">
-        <h2>{{ i18n "links" }}</h2>
+      <section class="mt-xl sm:mt-2xl">
+        <h2 class="fs-base font-600 mb-md pb-xs border-b border-bd1 sm:fs-lg">{{ i18n "links" }}</h2>
         {{ partial "links-list.html" (dict "groups" $groups "limit" $showOnHome "showGroupName" false) }}
-        <a class="read-more" href="{{ "links" | relLangURL }}">{{ i18n "view_all" }} →</a>
+        <a class="inline-block mt-md c-fg3 fs-xs hover:c-fg2 hover:b-b sm:fs-sm" href="{{ "links" | relLangURL }}">{{ i18n "view_all" }} →</a>
       </section>
       {{ end }}
     {{ end }}
   {{ end }}
 {{ end }}
+

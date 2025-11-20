@@ -11,7 +11,7 @@ Renders a menu for the given menu ID.
 {{- $menuID := .menuID }}
 
 {{- with index site.Menus $menuID }}
-  <ul>
+  <ul class="list-none p-0 m-0">
     {{- range . }}
       {{- $name := .Name }}
       {{- with .Identifier }}
@@ -20,9 +20,9 @@ Renders a menu for the given menu ID.
         {{- end }}
       {{- end }}
       {{- $isExternal := hasPrefix .URL "http" }}
-      <li>
+      <li class="mb-xs inline-block mr-sm md:block md:mr-0 ">
         <a href="{{ .URL }}"
-          {{- if $page.IsMenuCurrent .Menu . }} class="active"{{ end }}
+          {{- if $page.IsMenuCurrent .Menu . }} class="inline-block c-fg2 border-none fs-sm font-600 hover:opacity-70"{{ else }} class="inline-block c-fg2 border-none fs-sm hover:opacity-70"{{ end }}
           {{- if $isExternal }} target="_blank" rel="noopener"{{ end -}}
         >
           {{ $name }}

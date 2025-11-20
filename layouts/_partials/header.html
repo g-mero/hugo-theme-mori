@@ -1,14 +1,15 @@
-<div class="logo">
-  <h1><a href="{{ "/" | relURL }}">{{ site.Title }}</a></h1>
+<div class="mb-xl md:mb-md">
+  <h1 class="fs-xl md:fs-lg font-700 m-0"><a href="{{ "/" | relURL }}" class="border-none c-fg2 hover:opacity-70">{{ site.Title }}</a></h1>
 </div>
-<nav class="nav">
+<nav class="mb-0">
   {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
 </nav>
 
 {{ if .IsTranslated }}
-<nav class="lang-switcher">
-  {{ range .Translations }}
-    <a href="{{ .RelPermalink }}" class="lang-link">{{ .Language.LanguageName }}</a>
+<nav class="mt-lg md:mt-md pt-md md:pt-sm border-t border-bd1">
+  {{ range $index, $lang := .Translations }}
+    <a href="{{ $lang.RelPermalink }}" class="inline-block c-fg3 border-none fs-xs md:fs-sm hover:c-fg2">{{ $lang.Language.LanguageName }}</a>
+    {{- if lt $index (sub (len $.Translations) 1) -}}<span class="inline-block mx-xs c-fg4"> / </span>{{- end }}
   {{ end }}
 </nav>
 {{ end }}

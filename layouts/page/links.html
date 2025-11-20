@@ -1,8 +1,8 @@
 {{ define "main" }}
-  <section class="section-header">
-    <h1>{{ .Title }}</h1>
+  <section class="mb-lg md:mb-xl">
+    <h1 class="text-base md:text-lg font-600 m-0 mb-md leading-130 md:mb-md">{{ .Title }}</h1>
     {{ with .Content }}
-      <div class="section-description">
+      <div class="prose text-sm leading-relaxed text-fg3 mb-md md:text-base">
         {{ . }}
       </div>
     {{ end }}
@@ -40,24 +40,12 @@
 
     {{ $groups := sort $groups "weight" "asc" }}
 
-    <section class="links-page">
+    <section class="mt-lg md:mt-xl">
       {{ range $groups }}
-        <div class="links-group">
-          <h2 class="links-group-name">{{ partial "get-localized.html" (dict "data" . "field" "name") }}</h2>
+        <div class="mb-xl md:mb-lg last:mb-0">
+          <h2 class="text-base md:text-sm font-600 m-0 mb-md md:mb-sm pb-xs border-b border-bd1 text-fg2">{{ partial "get-localized.html" (dict "data" . "field" "name") }}</h2>
           {{ $items := sort .items "weight" "asc" }}
-          <ul class="links-list">
-            {{ range $items }}
-              <li class="link-item">
-                <a class="link-url" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
-                  <span class="link-name">{{ partial "get-localized.html" (dict "data" . "field" "name") }}</span>
-                  {{ $description := partial "get-localized.html" (dict "data" . "field" "description") }}
-                  {{ with $description }}
-                    <span class="link-description">{{ . }}</span>
-                  {{ end }}
-                </a>
-              </li>
-            {{ end }}
-          </ul>
+          {{ partial "links-list.html" (dict "groups" (slice .) "limit" 0 "showGroupName" false) }}
         </div>
       {{ end }}
     </section>
