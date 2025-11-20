@@ -30,6 +30,7 @@
 
 .content {
   flex: 1;
+  min-width: 0;
   padding: $spacing-2xl $spacing-xl;
   max-width: $content-max-width;
 

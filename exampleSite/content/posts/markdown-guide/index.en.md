@@ -1,6 +1,7 @@
 +++
 title = 'Markdown Syntax Guide'
 date = 2024-11-17T10:00:00+08:00
+lastmod = 2025-11-19
 draft = false
 tags = ['Markdown', 'Tutorial']
 +++
@@ -21,7 +22,9 @@ Use `#` to create headings, the number indicates the level.
 
 [This is a link](https://example.com)
 
-![This is an image](/autumn-7493439_1280.jpg)
+![Local image](/autumn-7493439_1280.jpg "This is a local image")
+
+![Remote image](https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80 "This is a remote image")
 
 ## Code
 
@@ -32,6 +35,11 @@ Code block:
 ```python
 def hello_world():
     print("Hello, World!")
+```
+
+```shell
+netsh advfirewall firewall add rule name="GameStream UDP" dir=in protocol=udp localport=5353,47998-48010 action=allow
+netsh advfirewall firewall add rule name="GameStream TCP" dir=in protocol=tcp localport=47984,47989,48010 action=allow
 ```
 
 ## Lists
