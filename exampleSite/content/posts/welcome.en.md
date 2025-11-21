@@ -2,7 +2,6 @@
 title = 'Welcome to Mori Theme'
 date = 2024-11-18T10:00:00+08:00
 draft = false
-tags = ['theme', 'Hugo']
 +++
 
 Welcome to **Mori Theme**! This is a minimal Hugo blogging theme.

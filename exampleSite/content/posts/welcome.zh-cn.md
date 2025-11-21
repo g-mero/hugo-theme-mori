@@ -2,7 +2,6 @@
 title = '欢迎使用 Mori 主题'
 date = 2024-11-18T10:00:00+08:00
 draft = false
-tags = ['主题', 'Hugo']
 +++
 
 欢迎使用 **Mori 主题**！这是一个极简的 Hugo 博客主题。

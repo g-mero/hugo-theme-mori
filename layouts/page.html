@@ -45,16 +45,57 @@
       {{ end }}
 
       {{ $section := .Section }}
-      {{ $next := (where .Site.RegularPages "Section" $section).Next . }}
-      {{ $prev := (where .Site.RegularPages "Section" $section).Prev . }}
-      {{ if or $next $prev }}
-        <nav class="flex-shrink-0 text-left max-w-full sm:text-right sm:max-w-50%">
-          {{ if $next }}
-            <a href="{{ $next.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full overflow-hidden text-ellipsis whitespace-nowrap hover:c-fg2" title="{{ $next.Title }}">→ {{ $next.Title }}</a>
-          {{ else if $prev }}
-            <a href="{{ $prev.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full overflow-hidden text-ellipsis whitespace-nowrap hover:c-fg2" title="{{ $prev.Title }}">← {{ $prev.Title }}</a>
-          {{ end }}
-        </nav>
+      {{ $pages := where .Site.RegularPages "Section" $section }}
+      {{ $currentIndex := 0 }}
+      {{ range $index, $page := $pages }}
+        {{ if eq $page.RelPermalink $.RelPermalink }}
+          {{ $currentIndex = $index }}
+        {{ end }}
+      {{ end }}
+
+      {{ $prevIndex := sub $currentIndex 1 }}
+      {{ $nextIndex := add $currentIndex 1 }}
+      {{ if lt $prevIndex 0 }}
+        {{ $prevIndex = sub (len $pages) 1 }}
+      {{ end }}
+      {{ if ge $nextIndex (len $pages) }}
+        {{ $nextIndex = 0 }}
+      {{ end }}
+
+      {{ $prev := index $pages $prevIndex }}
+      {{ $next := index $pages $nextIndex }}
+
+      {{ if not .Params.tags }}
+        {{/* No tags: show prev on left, next on right */}}
+        {{/* If prev and next are the same (only one article), show only next */}}
+        {{ if and $prev $next (eq $prev.RelPermalink $next.RelPermalink) }}
+          <nav class="flex w-full">
+            <div class="flex-1"></div>
+            <div class="flex-1 text-right overflow-hidden">
+              <a href="{{ $next.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:c-fg2" title="{{ $next.Title }}">{{ $next.Title }} →</a>
+            </div>
+          </nav>
+        {{ else }}
+          <nav class="flex w-full gap-md">
+            <div class="flex-1 text-left overflow-hidden">
+              {{ if $prev }}
+                <a href="{{ $prev.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:c-fg2" title="{{ $prev.Title }}">← {{ $prev.Title }}</a>
+              {{ end }}
+            </div>
+            <div class="flex-1 text-right overflow-hidden">
+              {{ if $next }}
+                <a href="{{ $next.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:c-fg2" title="{{ $next.Title }}">{{ $next.Title }} →</a>
+              {{ end }}
+            </div>
+          </nav>
+        {{ end }}
+      {{ else }}
+        {{/* Has tags: show only next on right */}}
+        {{ if $next }}
+          <nav class="flex-shrink-0 text-left max-w-full sm:text-right sm:max-w-50%">
+            <a href="{{ $next.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:c-fg2" title="{{ $next.Title }}">{{ $next.Title }} →</a>
+          </nav>
+        {{ end }}
       {{ end }}
     </div>
   </article>

@@ -8,8 +8,10 @@
     <aside class="w-full md:w-280px md:flex-shrink-0 p-lg md:p-2xl border-b md:border-b-0 border-bd1">
       {{ partial "header.html" . }}
     </aside>
-    <main class="flex-1 min-w-0 p-lg md:p-2xl max-w-700px md:max-w-full">
-      {{ block "main" . }}{{ end }}
+    <main class="flex-1 min-w-0 p-lg md:p-2xl max-w-700px md:max-w-full md:min-h-screen flex flex-col">
+      <div class="flex-1">
+        {{ block "main" . }}{{ end }}
+      </div>
       {{ partial "footer.html" . }}
     </main>
   </div>

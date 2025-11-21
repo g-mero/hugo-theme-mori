@@ -29,15 +29,6 @@
   --transition-base: all 0.2s ease;
 }
 
-// Dark mode
-@media (prefers-color-scheme: dark) {
-  :root {
-    @each $name, $color in vars.$colors-dark {
-      --color-#{$name}: #{$color};
-    }
-  }
-}
-
 *,
 ::before,
 ::after {
@@ -69,8 +60,8 @@ body {
 }
 
 a {
-  color: var(--color-fg2);
-  text-decoration: none;
+  color: inherit;
+  text-decoration: inherit;
   transition: var(--transition-base);
   border-color: var(--color-fg2);
 }

@@ -240,12 +240,12 @@ article,
   }
 
   a {
-    opacity: 0.675;
+    opacity: 0.875;
     border-bottom-width: 1px;
+    font-size: 0.95em;
 
     &:hover {
-      opacity: 0.875;
-      border-bottom-color: var(--color-main);
+      opacity: 0.5;
     }
   }
 }
