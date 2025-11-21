@@ -1,8 +1,8 @@
 {{ define "main" }}
   <section class="mb-lg sm:mb-xl">
-    <h1 class="fs-base font-600 m-0 mb-md leading-130 mb-sm sm:fs-xl sm:mb-md">{{ .Title }}</h1>
+    <h1 class="fs-lg font-600 m-0 mb-xs lh-tight break-all sm:fs-2xl">{{ .Title }}</h1>
     {{ with .Content }}
-      <div class="prose fs-sm leading-relaxed c-fg3 mb-md sm:fs-base">
+      <div class="prose fs-sm lh-relaxed c-fg3 mb-md sm:fs-base">
         {{ . }}
       </div>
     {{ end }}

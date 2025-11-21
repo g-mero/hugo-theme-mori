@@ -1,8 +1,8 @@
 {{ define "main" }}
-  <section class="mb-lg md:mb-xl">
-    <h1 class="text-base md:text-lg font-600 m-0 mb-md leading-130 md:mb-md">{{ .Title }}</h1>
+  <section class="mb-lg sm:mb-xl">
+    <h1 class="fs-lg font-600 m-0 mb-xs lh-tight break-all sm:fs-2xl">{{ .Title }}</h1>
     {{ with .Content }}
-      <div class="prose text-sm leading-relaxed text-fg3 mb-md md:text-base">
+      <div class="prose fs-sm lh-relaxed c-fg3 mb-md sm:fs-base">
         {{ . }}
       </div>
     {{ end }}
@@ -42,8 +42,8 @@
 
     <section class="mt-lg md:mt-xl">
       {{ range $groups }}
-        <div class="mb-xl md:mb-lg last:mb-0">
-          <h2 class="text-base md:text-sm font-600 m-0 mb-md md:mb-sm pb-xs border-b border-bd1 text-fg2">{{ partial "get-localized.html" (dict "data" . "field" "name") }}</h2>
+        <div class="mb-lg md:mb-xl last:mb-0">
+          <h2 class="fs-sm md:fs-base font-600 m-0 mb-sm md:mb-md pb-xs border-b border-bd1 text-fg2">{{ partial "get-localized.html" (dict "data" . "field" "name") }}</h2>
           {{ $items := sort .items "weight" "asc" }}
           {{ partial "links-list.html" (dict "groups" (slice .) "limit" 0 "showGroupName" false) }}
         </div>
