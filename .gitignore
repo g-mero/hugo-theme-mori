@@ -9,7 +9,9 @@ dist/
 # OS files
 .DS_Store
 Thumbs.db
-
+linfunction hello() {
+  console.log("Hello, Mori!");
+}
 # Cache / temporary
 .sass-cache/
 .cache/
