@@ -2,9 +2,9 @@
   {{- $authors := partial "get-authors.html" . }}
 
   <article>
-    <header class="mb-lg sm:mb-xl">
-      <h1 class="fs-lg font-600 m-0 mb-xs lh-tight break-all sm:fs-xl">{{ .Title }}</h1>
-      <div class="flex items-center flex-wrap fs-xs c-fg4 font-mono sm:fs-sm">
+    <header class="mb-lg md:mb-xl">
+      <h1 class="fs-lg font-600 m-0 mb-xs lh-tight break-all md:fs-xl">{{ .Title }}</h1>
+      <div class="flex items-center flex-wrap fs-xs c-fg4 font-mono md:fs-sm">
         {{- if gt (len $authors) 0 }}
           <span class="flex whitespace-nowrap">
             {{- range $index, $author := $authors -}}
@@ -31,11 +31,11 @@
       </div>
     </header>
 
-    <div class="mb-lg sm:mb-xl">
+    <div class="mb-lg md:mb-xl">
       {{ .Content }}
     </div>
 
-    <div class="mt-xl pt-sm b-t b-bd1 flex flex-col items-stretch gap-sm sm:flex-row sm:justify-between sm:items-start sm:pt-md sm:flex-wrap">
+    <div class="mt-xl pt-sm b-t b-bd1 flex flex-col items-stretch gap-sm md:flex-row md:justify-between md:items-start md:pt-md md:flex-wrap">
       {{ with .Params.tags }}
         <div class="flex flex-wrap gap-xs items-start">
           {{ range . }}
@@ -92,7 +92,7 @@
       {{ else }}
         {{/* Has tags: show only next on right */}}
         {{ if $next }}
-          <nav class="flex-shrink-0 text-left max-w-full sm:text-right sm:max-w-50%">
+          <nav class="flex-shrink-0 text-left max-w-full md:text-right md:max-w-50%">
             <a href="{{ $next.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:c-fg2" title="{{ $next.Title }}">{{ $next.Title }} →</a>
           </nav>
         {{ end }}

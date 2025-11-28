@@ -1,0 +1,10 @@
+/* disable giscus on small screens */
+.giscus {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .giscus {
+    display: block;
+  }
+}

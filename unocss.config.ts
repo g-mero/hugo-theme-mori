@@ -43,13 +43,13 @@ export default defineConfig({
       lg: "24px",
       xl: "32px",
       "2xl": "48px",
+      "3xl": "64px",
     },
     fontFamily: {
       mono: '"Menlo", "Meslo LG", monospace',
       sans: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif',
     },
     breakpoints: {
-      sm: "600px", // ≥600px
       md: "768px", // ≥768px
     },
     borderRadius: {

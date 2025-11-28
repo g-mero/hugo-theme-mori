@@ -1,1 +1,7 @@
 <meta name="hugo-theme" content="hugo-theme-mori" />
+{{- with resources.Get "css/custom.css" }}
+  {{- $css := .  }}
+  {{- with $css  | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+  {{- end }}
+{{- end }}

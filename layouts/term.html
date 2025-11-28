@@ -1,19 +1,19 @@
 {{ define "main" }}
-  <section class="mb-lg sm:mb-xl">
-    <h1 class="fs-lg font-600 m-0 mb-xs lh-tight break-all sm:fs-xl">{{ .Title }}</h1>
+  <section class="mb-lg md:mb-xl">
+    <h1 class="fs-lg font-600 m-0 mb-xs lh-tight break-all md:fs-xl">{{ .Title }}</h1>
     {{ with .Content }}
-      <div class="prose fs-sm lh-relaxed c-fg3 mb-md sm:fs-base">
+      <div class="prose fs-sm lh-relaxed c-fg3 mb-md md:fs-base">
         {{ . }}
       </div>
     {{ end }}
   </section>
 
   {{ $paginator := .Paginate .Pages }}
-  <section class="mt-md sm:mt-lg">
+  <section class="mt-md md:mt-lg">
     <ul class="list-none p-0 m-0">
       {{ range $paginator.Pages }}
-        <li class="flex flex-col gap-1 mb-md sm:flex-row sm:items-baseline sm:gap-sm sm:mb-sm">
-          <time class="fs-xs c-fg4 font-mono sm:fs-sm sm:flex-shrink-0 sm:min-w-100px" datetime="{{ .Date.Format "2006-01-02" }}">
+        <li class="flex flex-col gap-1 mb-md md:flex-row md:items-baseline md:gap-sm md:mb-sm">
+          <time class="fs-xs c-fg4 font-mono md:fs-sm md:flex-shrink-0 md:min-w-100px" datetime="{{ .Date.Format "2006-01-02" }}">
             {{ .Date.Format "2006-01-02" }}
           </time>
           <a class="flex-1 c-fg2 border-b border-fg2 hover:border-transparent" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>

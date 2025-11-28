@@ -4,11 +4,11 @@
   {{ partial "head.html" . }}
 </head>
 <body>
-  <div class="flex flex-col md:flex-row min-h-screen max-w-1200px mx-auto">
-    <aside class="w-full md:w-280px md:flex-shrink-0 p-lg md:p-2xl border-b md:border-b-0 border-bd1">
+  <div class="flex flex-col min-h-screen max-w-768px mx-auto">
+    <aside class="w-full p-lg pb-0 md:p-2xl md:pb-0">
       {{ partial "header.html" . }}
     </aside>
-    <main class="flex-1 min-w-0 p-lg md:p-2xl max-w-700px md:max-w-full md:min-h-screen flex flex-col">
+    <main class="flex-1 min-w-0 p-lg md:p-2xl max-w-full md:min-h-screen flex flex-col">
       <div class="flex-1">
         {{ block "main" . }}{{ end }}
       </div>
