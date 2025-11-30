@@ -71,3 +71,11 @@ hr {
   border-top: 1px solid var(--color-bd1);
   margin: 2em 0;
 }
+
+.lang-switcher {
+  &::before {
+    content: "|";
+    display: inline;
+    opacity: 0.5;
+  }
+}
