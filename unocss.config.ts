@@ -1,4 +1,4 @@
-import { defineConfig, presetWind3, presetIcons } from "unocss";
+import { defineConfig, presetWind3 } from "unocss";
 
 export default defineConfig({
   cli: {
@@ -59,7 +59,6 @@ export default defineConfig({
   },
 
   presets: [
-    presetIcons(),
     presetWind3({
       preflight: false,
     }),

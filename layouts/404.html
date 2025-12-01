@@ -6,7 +6,10 @@
       {{ i18n "page_not_found" | default "Page Not Found" }}
     </h1>
     <p class="fs-sm c-fg3 mb-2xl">
-      <a href="{{ "/" | relLangURL }}" class="c-main hover:opacity-70">{{ i18n "back_to_home" | default "← Back to Home" }}</a>
+      <a href="{{ "/" | relLangURL }}" class="c-main hover:opacity-70">
+        <span class="icon i-arrow-left-alt"></span>
+        {{ i18n "back_to_home"  }}
+      </a>
     </p>
 
     <div class="mt-2xl pt-xl border-t border-bd1">

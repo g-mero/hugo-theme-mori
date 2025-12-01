@@ -8,5 +8,5 @@ view_all = "查看全部"
 
 # 404 页面
 page_not_found = "页面未找到"
-back_to_home = "← 返回首页"
+back_to_home = "返回首页"
 maybe_you_want = "也许你在找："

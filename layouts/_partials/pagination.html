@@ -4,7 +4,7 @@
   <ul class="list-none p-0 m-0 flex justify-center items-center flex-wrap gap-md">
     {{ if $paginator.HasPrev }}
     <li class="inline-block">
-      <a href="{{ $paginator.Prev.URL }}" class="inline-block px-xs py-xs c-fg2 no-underline hover:opacity-70">←</a>
+      <a href="{{ $paginator.Prev.URL }}" class="inline-block px-xs py-xs c-fg2 no-underline hover:opacity-70"><span class="icon i-arrow-left"></span></a>
     </li>
     {{ end }}
 
@@ -14,7 +14,7 @@
 
     {{ if $paginator.HasNext }}
     <li class="inline-block">
-      <a href="{{ $paginator.Next.URL }}" class="inline-block px-xs py-xs c-fg2 no-underline hover:opacity-70">→</a>
+      <a href="{{ $paginator.Next.URL }}" class="inline-block px-xs py-xs c-fg2 no-underline hover:opacity-70"><span class="icon i-arrow-right"></span></a>
     </li>
     {{ end }}
   </ul>
