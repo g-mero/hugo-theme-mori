@@ -4,6 +4,7 @@ date = 2024-11-17T10:00:00+08:00
 lastmod = 2025-11-19
 draft = false
 tags = ['Markdown', 'Tutorial']
+categories = ['Guides']
 +++
 
 This article introduces commonly used Markdown syntax.

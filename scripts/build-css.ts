@@ -1,11 +1,10 @@
-import { writeFile, writeFileSync } from "node:fs";
+import { writeFileSync } from "node:fs";
 import * as sass from "sass-embedded";
 import { transform, browserslistToTargets } from "lightningcss";
 import browserslist from "browserslist";
 import { mkdir } from "node:fs/promises";
-import { dirname, resolve, join } from "node:path";
+import { dirname, join } from "node:path";
 import chokidar from "chokidar";
-import { fileURLToPath } from "node:url";
 
 const __dirname = process.cwd();
 

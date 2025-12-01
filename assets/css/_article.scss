@@ -26,10 +26,10 @@ article,
     margin-bottom: 0.875em;
     font-weight: 600;
     line-height: 1.5;
-    color: var(--color-fg2);
+    color: var(--color-fg1);
 
     &::before {
-      color: var(--color-fg4);
+      color: var(--color-fg3);
       font-weight: 500;
       font-size: 0.875em;
       opacity: 0.5;
@@ -106,12 +106,20 @@ article,
     }
   }
 
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
   li {
     margin-bottom: 0.8em;
     padding-left: 0.5em;
 
     &::marker {
-      color: var(--color-fg4);
+      color: var(--color-fg3);
     }
   }
 
@@ -155,7 +163,7 @@ article,
   // Blockquote
   blockquote {
     border-left: 4px solid var(--color-bd2);
-    background-color: var(--color-bg2);
+    background-color: var(--color-code);
     margin: 1.5em 0;
     padding: 12px 16px;
 
@@ -169,7 +177,9 @@ article,
     margin: 1.5em 0;
     padding: 0;
 
-    @include full-bleed;
+    @include desktop {
+      @include full-bleed;
+    }
   }
 
   img {
@@ -183,7 +193,7 @@ article,
     margin-top: 0.8em;
     padding: 0 12px;
     font-size: 0.9em;
-    color: var(--color-fg4);
+    color: var(--color-fg3);
     text-align: center;
     line-height: 1.6;
 
@@ -254,7 +264,7 @@ article,
   right: 8px;
   padding: 2px 8px;
   font-size: 12px;
-  color: var(--color-fg4);
+  color: var(--color-fg3);
   background: transparent;
   border: none;
   cursor: pointer;
@@ -265,18 +275,17 @@ article,
   user-select: none;
 
   &:hover {
-    color: var(--color-fg1);
+    color: var(--color-fg2);
   }
 
   &.copied {
-    color: var(--color-fg2);
+    color: var(--color-fg1);
   }
 }
 
 .code-block-wrapper:hover .code-copy-btn {
   opacity: 1;
 }
-
 
 @include desktop {
   .code-copy-btn {

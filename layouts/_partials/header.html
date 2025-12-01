@@ -1,7 +1,7 @@
 
 {{ if .IsHome}}
 <div class="mb-md md:mb-lg">
-  <h1 class="fs-lg md:fs-xl font-700 m-0"><a href="{{ "/" | relURL }}" class="border-none c-fg2 hover:opacity-70">{{ site.Title }}</a></h1>
+  <h1 class="fs-lg md:fs-xl font-700 m-0"><a href="{{ "/" | relURL }}" class="border-none c-fg1 hover:opacity-70">{{ site.Title }}</a></h1>
 </div>
 <div>
   {{ partial "menu.html" (dict "menuID" "main" "page" .) }}

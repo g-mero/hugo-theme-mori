@@ -1,4 +1,4 @@
-<footer class="mt-2xl pt-lg border-t border-bd1 c-fg4 fs-sm">
+<footer class="mt-2xl pt-lg border-t border-bd1 c-fg3 fs-sm">
   {{- if site.Copyright }}
     <p class="m-0">{{ site.Copyright }}</p>
   {{- else }}
@@ -7,6 +7,7 @@
 
   {{- /* Extend footer - for custom content like ICP number, etc. */ -}}
   {{- if templates.Exists "_partials/extend-footer.html" }}
-      {{ partialCached "extend-footer.html" .Site }}
+      {{ partial "extend-footer.html" .Site }}
   {{- end }}
+
 </footer>

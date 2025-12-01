@@ -2,9 +2,17 @@
   {{- $authors := partial "get-authors.html" . }}
 
   <article>
-    <header class="mb-lg md:mb-xl">
+    <header class="mb-lg md:mb-xl mt-xl">
+      <div class="mb-sm">
+        <a class="fs-base border-none inline c-main" href="{{relLangURL ""}}" ><div class="i-bx:left-arrow-alt icon"></div>Back</a>
+        {{with .GetTerms "categories"}}
+          {{range .}}
+          <a class="fs-sm c-fg2 border-none inline-flex items-center bg-bg1 px-2 py-1 rounded-lg ml-xs md:ml-sm" href="{{.RelPermalink}}" >{{.LinkTitle}}</a>
+          {{end}}
+        {{end}}
+      </div>
       <h1 class="fs-lg font-600 m-0 mb-xs lh-tight break-all md:fs-xl">{{ .Title }}</h1>
-      <div class="fs-sm c-fg4 font-mono">
+      <div class="fs-sm c-fg3 font-mono">
         {{- if gt (len $authors) 0 }}
           <span>
             {{- range $index, $author := $authors -}}
@@ -47,10 +55,10 @@
     </div>
 
     <div class="mt-xl pt-sm b-t b-bd1 flex flex-col items-stretch gap-sm md:flex-row md:justify-between md:items-start md:pt-md md:flex-wrap">
-      {{ with .Params.tags }}
+      {{ with .GetTerms "tags" }}
         <div class="flex flex-wrap gap-xs items-start">
           {{ range . }}
-            <a href="{{ "tags" | relURL }}/{{ . | urlize }}/" class="inline-block c-fg3 fs-sm b-none hover:c-fg2 truncate">#{{ . }}</a>
+            <a href="{{ .RelPermalink }}" class="inline-block c-fg3 fs-sm b-none hover:c-fg2 truncate">#{{ .LinkTitle  }}</a>
           {{ end }}
         </div>
       {{ end }}
@@ -83,19 +91,19 @@
           <nav class="flex w-full">
             <div class="flex-1"></div>
             <div class="flex-1 text-right overflow-hidden">
-              <a href="{{ $next.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:c-fg2" title="{{ $next.Title }}">{{ $next.Title }} →</a>
+              <a href="{{ $next.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:op-60" title="{{ $next.Title }}">{{ $next.Title }} →</a>
             </div>
           </nav>
         {{ else }}
           <nav class="flex w-full gap-md">
             <div class="flex-1 text-left overflow-hidden">
               {{ if $prev }}
-                <a href="{{ $prev.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:c-fg2" title="{{ $prev.Title }}">← {{ $prev.Title }}</a>
+                <a href="{{ $prev.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:op-60" title="{{ $prev.Title }}">← {{ $prev.Title }}</a>
               {{ end }}
             </div>
             <div class="flex-1 text-right overflow-hidden">
               {{ if $next }}
-                <a href="{{ $next.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:c-fg2" title="{{ $next.Title }}">{{ $next.Title }} →</a>
+                <a href="{{ $next.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:op-60" title="{{ $next.Title }}">{{ $next.Title }} →</a>
               {{ end }}
             </div>
           </nav>
@@ -104,7 +112,7 @@
         {{/* Has tags: show only next on right */}}
         {{ if $next }}
           <nav class="flex-shrink-0 text-left max-w-full md:text-right md:max-w-50%">
-            <a href="{{ $next.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:c-fg2" title="{{ $next.Title }}">{{ $next.Title }} →</a>
+            <a href="{{ $next.RelPermalink }}" class="inline-block c-fg3 fs-sm b-none max-w-full truncate hover:op-60" title="{{ $next.Title }}">{{ $next.Title }} →</a>
           </nav>
         {{ end }}
       {{ end }}

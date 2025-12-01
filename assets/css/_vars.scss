@@ -1,26 +1,17 @@
-$colors-light: (
-  "fg1": #333,
-  "fg2": #111,
-  "fg3": #666,
-  "fg4": #999,
-  "bg1": #fff,
-  "bg2": #f9f9f9,
-  "bd1": #eee,
-  "bd2": #ddd,
-  "code": #f5f5f5,
-  "main": #007acc
-);
+@use "sass:color";
 
-$colors-dark: (
-  "fg1": #ccc,
-  "fg2": #e0e0e0,
+$hue: 210;
+
+$colors-light: (
+  "body": rgb(217, 222, 216),
+  "fg1": #333,
+  "fg2": #666,
   "fg3": #999,
-  "fg4": #666,
-  "bg1": #1e1e1e,
-  "bg2": #2d2d2d,
-  "bd1": #404040,
-  "bd2": #555,
-  "code": #2d2d2d
+  "code": #e8eee7,
+  "bd1": #ccc,
+  "bd2": #bebebe,
+  "main": #0aa81f,
+  "bg1": #e2f1e4
 );
 
 $fs-ramp: (

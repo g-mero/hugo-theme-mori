@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "pnpm run dev:copy-config && concurrently -k -n \"UNOCSS,CSS,JS,HUGO\" -c \"white,gray,blue,green\" \"pnpm:unocss:watch\" \"pnpm:dev:css\" \"pnpm:dev:js\" \"pnpm:serve\"",
     "dev:copy-config": "tsx scripts/copy-config.ts",
-    "serve": "hugo server -s exampleSite --gc --themesDir ../..",
+    "serve": "hugo server -s exampleSite --gc --cleanDestinationDir --themesDir ../..",
     "build:css": "unocss && tsx scripts/build-css.ts",
     "build:js": "tsx scripts/build-js.ts",
     "unocss:watch": "unocss --watch",
@@ -18,21 +18,14 @@
   "license": "MIT",
   "packageManager": "pnpm@10.22.0",
   "browserslist": [
-    "> 0.2%",
-    "last 3 versions",
-    "not dead",
-    "Firefox ESR",
-    "Chrome >= 60",
-    "Safari >= 11",
-    "Edge >= 79",
-    "iOS >= 11",
-    "Android >= 5"
+    "> 0.1% and fully supports css-variables"
   ],
   "devDependencies": {
     "@types/node": "^24.10.1",
     "@unocss/cli": "^66.5.9",
     "browserslist": "^4.28.0",
     "chokidar": "^4.0.3",
+    "@iconify-json/bx": "^1.2.2",
     "concurrently": "^9.2.1",
     "husky": "^9.1.7",
     "lightningcss": "^1.30.2",

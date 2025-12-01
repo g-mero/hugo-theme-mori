@@ -3,11 +3,14 @@
 // A minimal Hugo theme
 // ==========================================
 
+// 1. Reset styles
+@use "reset";
+
 // 2. Base styles
 @use "base";
 
-// 1. UnoCSS
+// 3. UnoCSS
 @use "_unocss.css";
 
-// 6. Article content
+// 4. Article
 @use "article";

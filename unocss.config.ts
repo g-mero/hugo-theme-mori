@@ -1,4 +1,4 @@
-import { defineConfig, presetWind3 } from "unocss";
+import { defineConfig, presetWind3, presetIcons } from "unocss";
 
 export default defineConfig({
   cli: {
@@ -9,16 +9,15 @@ export default defineConfig({
   },
   theme: {
     colors: {
+      body: "var(--color-body)", // body-bg
       fg1: "var(--color-fg1)", // text
       fg2: "var(--color-fg2)", // text-dark
       fg3: "var(--color-fg3)", // text-light
-      fg4: "var(--color-fg4)", // text-lighter
-      bg1: "var(--color-bg1)", // bg
-      bg2: "var(--color-bg2)", // bg-light
       bd1: "var(--color-bd1)", // border
       bd2: "var(--color-bd2)", // border-dark
       code: "var(--color-code)", // code-bg
       main: "var(--color-main)", // main color
+      bg1: "var(--color-bg1)", // main-bg
     },
     fontSize: {
       xs: "var(--fs-xs)", // smaller
@@ -60,6 +59,7 @@ export default defineConfig({
   },
 
   presets: [
+    presetIcons(),
     presetWind3({
       preflight: false,
     }),

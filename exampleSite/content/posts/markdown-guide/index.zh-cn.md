@@ -4,6 +4,7 @@ date = 2024-11-17T10:00:00+08:00
 lastmod = 2025-11-19
 draft = false
 tags = ['Markdown', '教程']
+categories = ['指南']
 +++
 
 本文介绍常用的 Markdown 语法。
