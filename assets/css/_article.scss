@@ -132,10 +132,7 @@ article,
     scrollbar-color: var(--color-bd2) transparent;
 
     @include desktop {
-      padding: 12px;
-      margin-left: -16px;
-      margin-right: -16px;
-      border-radius: 0;
+      @include full-bleed;
     }
 
     code {
@@ -151,6 +148,10 @@ article,
     background-color: var(--color-code);
     margin: 1.5em 0;
     padding: 12px 16px;
+
+    @include desktop {
+      @include full-bleed;
+    }
 
     p {
       margin: 0;
@@ -195,6 +196,11 @@ article,
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 
+    @include desktop {
+      width: calc(100% + 32px);
+      @include full-bleed;
+    }
+
     th,
     td {
       padding: 8px 12px;
@@ -220,50 +226,5 @@ article,
     &:hover {
       opacity: 0.5;
     }
-  }
-}
-
-// Code copy button
-.code-block-wrapper {
-  position: relative;
-  margin-bottom: 1.2em;
-
-  pre {
-    margin-bottom: 0;
-  }
-}
-
-.code-copy-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  padding: 2px 8px;
-  font-size: 12px;
-  color: var(--color-fg3);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  opacity: 0.5;
-  transition:
-    opacity 0.2s ease,
-    color 0.15s ease;
-  user-select: none;
-
-  &:hover {
-    color: var(--color-fg2);
-  }
-
-  &.copied {
-    color: var(--color-fg1);
-  }
-}
-
-.code-block-wrapper:hover .code-copy-btn {
-  opacity: 1;
-}
-
-@include desktop {
-  .code-copy-btn {
-    opacity: 0;
   }
 }

@@ -6,7 +6,7 @@
   {{ end }}
 
   <section class="posts">
-    <h2 class="fs-lg font-600 mb-md pb-xs border-b border-bd1">{{ i18n "recent_posts" }}</h2>
+    <h2 class="fs-lg mb-md pb-xs border-b border-bd1 c-main">{{ i18n "recent_posts" }}</h2>
     <ul class="list-none p-0 m-0">
       {{ range first 5 site.RegularPages }}
         <li class="flex flex-col gap-1 mb-md md:flex-row md:items-baseline md:gap-sm md:mb-sm">
@@ -71,7 +71,7 @@
 
       {{ if $groups }}
       <section class="mt-xl md:mt-2xl">
-        <h2 class="fs-lg font-600 mb-md pb-xs border-b border-bd1">{{ i18n "links" }}</h2>
+        <h2 class="fs-lg mb-md pb-xs border-b border-bd1 c-main">{{ i18n "links" }}</h2>
         {{ partial "links-list.html" (dict "groups" $groups "limit" $showOnHome "showGroupName" false) }}
         <a class="inline-block mt-xl c-fg3 fs-sm hover:c-fg2 hover:b-b" href="{{ "links" | relLangURL }}">{{ i18n "view_all" }} <span class="icon i-arrow-right"></span></a>
       </section>

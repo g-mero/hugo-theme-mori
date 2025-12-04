@@ -1,5 +1,5 @@
 {{ define "main" }}
-  <section class="mb-lg md:mb-xl">
+  <section class="mb-lg md:mb-xl mt-xl">
     <div class="mb-sm">
       <a class="fs-base border-none inline c-main" href="{{relLangURL ""}}" ><span class="icon i-arrow-left-alt"></span>Back</a>
       <div class="fs-sm c-fg2 border-none inline-flex items-center bg-bg1 px-md py-xs lh-tight rounded-lg ml-xs md:ml-sm">Page</div>
@@ -48,7 +48,7 @@
     <section class="mt-xl">
       {{ range $groups }}
         <div class="mb-xl last:mb-0">
-          <h2 class="fs-base font-600 m-0 mb-md pb-xs border-b border-bd1 text-fg2">{{ partial "get-localized.html" (dict "data" . "field" "name") }}</h2>
+          <h2 class="fs-base font-600 m-0 mb-md pb-xs border-b border-bd1 c-main">{{ partial "get-localized.html" (dict "data" . "field" "name") }}</h2>
           {{ $items := sort .items "weight" "asc" }}
           {{ partial "links-list.html" (dict "groups" (slice .) "limit" 0 "showGroupName" false) }}
         </div>
