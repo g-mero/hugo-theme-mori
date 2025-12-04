@@ -2,11 +2,11 @@
   <section class="mb-lg md:mb-xl mt-xl">
     <div class="mb-sm">
       <a class="fs-base border-none inline c-main" href="{{relLangURL ""}}" ><span class="icon i-arrow-left-alt"></span>Back</a>
-      <div class="fs-sm c-fg2 border-none inline-flex items-center bg-bg1 px-2 py-1 rounded-lg ml-xs md:ml-sm">Taxonomy</div>
+      <div class="fs-sm c-fg2 border-none inline-flex items-center bg-bg1 px-md py-xs lh-tight rounded-lg ml-xs md:ml-sm">Taxonomy</div>
     </div>
 
     <div class="mb-lg">
-      <h1 class="mb-xs fs-lg md:fs-xl font-600 m-0 mb-xs lh-tight break-all">{{ .Title }}</h1>
+      <h1 class="mb-xs fs-xl font-600 m-0 mb-xs lh-tight break-all">{{ .Title }}</h1>
       <div class="fs-sm c-fg3 font-mono">
         <span>Total {{ len .Pages }} terms</span>
       </div>
@@ -23,7 +23,7 @@
     <ul class="list-none p-0 m-0">
       {{ range .Pages }}
         <li class="flex flex-col gap-1 mb-md md:flex-row md:items-baseline md:gap-sm md:mb-sm">
-          <span class="fs-xs c-fg3 font-mono md:fs-sm md:flex-shrink-0 md:min-w-100px">
+          <span class="fs-sm c-fg3 font-mono md:flex-shrink-0 md:min-w-100px">
             {{ len .Pages }} {{ if eq (len .Pages) 1 }}page{{ else }}pages{{ end }}
           </span>
           <a class="flex-1 c-fg2 border-b border-fg2 hover:border-transparent" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>

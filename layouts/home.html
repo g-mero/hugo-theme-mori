@@ -10,7 +10,7 @@
     <ul class="list-none p-0 m-0">
       {{ range first 5 site.RegularPages }}
         <li class="flex flex-col gap-1 mb-md md:flex-row md:items-baseline md:gap-sm md:mb-sm">
-          <time class="fs-xs c-fg4 font-mono md:fs-sm md:flex-shrink-0 md:min-w-100px" datetime="{{ .Date.Format "2006-01-02" }}">
+          <time class="fs-sm c-fg4 font-mono md:flex-shrink-0 md:min-w-100px" datetime="{{ .Date.Format "2006-01-02" }}">
             {{ .Date.Format "2006-01-02" }}
           </time>
           <a class="flex-1 c-fg2 border-b border-fg2 hover:border-transparent" href="{{ .RelPermalink }}">{{ .Title }}</a>

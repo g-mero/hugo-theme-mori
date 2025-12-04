@@ -36,13 +36,13 @@ export default defineConfig({
       relaxed: "var(--lh-relaxed)", // relaxed
     },
     spacing: {
-      xs: "8px",
-      sm: "12px",
-      md: "16px",
-      lg: "24px",
-      xl: "32px",
-      "2xl": "48px",
-      "3xl": "64px",
+      xs: ".35rem",
+      sm: ".65rem",
+      md: ".85rem",
+      lg: "1.2rem",
+      xl: "1.8rem",
+      "2xl": "2.5rem",
+      "3xl": "4rem",
     },
     fontFamily: {
       mono: '"Menlo", "Meslo LG", monospace',

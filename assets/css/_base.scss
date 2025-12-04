@@ -30,14 +30,14 @@
 }
 
 html {
-  font-size: 15px;
-  line-height: 1.5;
+  font-size: 17px;
+  line-height: var(--lh-base);
   scrollbar-width: thin;
   scrollbar-gutter: stable;
   scrollbar-color: var(--color-fg3) transparent;
 
   @include desktop {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
