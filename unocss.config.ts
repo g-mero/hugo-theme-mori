@@ -23,7 +23,6 @@ export default defineConfig({
       xs: "var(--fs-xs)", // smaller
       sm: "var(--fs-sm)", // small
       base: "var(--fs-base)", // base
-      md: "var(--fs-md)", // medium
       lg: "var(--fs-lg)", // large
       xl: "var(--fs-xl)", // extra large
       "2xl": "var(--fs-2xl)", // 2x extra large

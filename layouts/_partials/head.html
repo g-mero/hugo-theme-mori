@@ -64,7 +64,7 @@
 
 {{- /* Extend head - for custom analytics, etc. */ -}}
 {{- if templates.Exists "_partials/extend-head.html" }}
-  {{ partialCached "extend-head.html" .Site }}
+  {{ partial "extend-head.html" .Site }}
 {{- end }}
 
 

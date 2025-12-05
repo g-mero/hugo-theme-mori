@@ -16,9 +16,8 @@ async function buildJs() {
     }),
     clean: true,
     minify: !isDev,
-    sourcemap: isDev,
-    watch: isDev ? "./assets/js" : undefined,
-    ignoreWatch: [/\.js$/, /compiled/],
+    sourcemap: false,
+    watch: isDev ? "./assets/**/*.ts" : undefined,
   });
 }
 

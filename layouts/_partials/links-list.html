@@ -26,15 +26,14 @@
   {{ $allItems = first $limit $allItems }}
 {{ end }}
 
-{{/* Render single list */}}
-<ul class="list-none p-0 m-0 grid grid-cols-1 md:grid-cols-2 gap-sm md:gap-xs gap-y-md md:gap-y-sm items-stretch">
+<ul class="list-none p-0 m-0">
   {{ range $allItems }}
-    <li class="m-0 flex">
-      <a class="flex flex-col flex-1 p-xs md:p-sm border b-solid border-bd1 rounded-sm c-fg1 no-underline transition-all hover:border-fg2" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
-        <span class="block font-500 mb-xs overflow-hidden text-ellipsis whitespace-nowrap">{{ partial "get-localized.html" (dict "data" . "field" "name") }}</span>
+    <li class="mb-md md:mb-sm">
+      <a class="fs-sm hover:op-60" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+        <span class="font-500 c-fg2">[{{ partial "get-localized.html" (dict "data" . "field" "name") }}]</span>
         {{ $description := partial "get-localized.html" (dict "data" . "field" "description") }}
         {{ with $description }}
-          <span class="block fs-sm c-fg3 overflow-hidden text-ellipsis lh-tight line-clamp-2">{{ . }}</span>
+          <span class="c-fg3 ml-xs">- {{ . }}</span>
         {{ end }}
       </a>
     </li>

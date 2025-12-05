@@ -4,7 +4,7 @@
   <article>
     <header class="mb-lg md:mb-xl mt-xl">
       <div class="mb-sm">
-        <a class="fs-base border-none inline c-main" href="{{relLangURL ""}}" ><span class="icon i-arrow-left-alt"></span>Back</a>
+        <a class="fs-base border-none inline c-main" id="back-anchor" href="{{relLangURL ""}}" ><span class="icon i-arrow-left-alt"></span>Back</a>
         {{with .GetTerms "categories"}}
           {{range .}}
           <a class="fs-sm c-fg2 border-none inline-flex items-center bg-bg1 px-md py-xs lh-tight rounded-lg ml-xs md:ml-sm" href="{{.RelPermalink}}" >{{.LinkTitle}}</a>
