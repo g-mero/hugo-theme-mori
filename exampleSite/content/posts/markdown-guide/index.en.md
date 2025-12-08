@@ -27,7 +27,7 @@ Use `#` to create headings, the number indicates the level.
 
 ![Remote image](https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80 "This is a remote image")
 
-![Error image](https://example.com/nonexistent.jpg "This image will not load")
+![Error image](https://example.com/nonexistent_1080x512.jpg "This image will not load")
 
 ## Code
 

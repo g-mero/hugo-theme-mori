@@ -37,8 +37,6 @@ function loadImg(img: HTMLImageElement) {
   img.src = dataSrc;
   const loaded = () => {
     setDataset(img, "status", "loaded");
-    removeDataset(img, "guess-width");
-    removeDataset(img, "guess-height");
     img.title = origTitle;
   };
 
@@ -50,9 +48,10 @@ function loadImg(img: HTMLImageElement) {
     clearLoadHandler();
     setDataset(img, "status", "error");
     img.title = "Load failed";
-    console.log(img.width, img.height);
-
-    img.src = blankImgData(img.width || 96, img.height || 48);
+    img.src = blankImgData(
+      Number(img.dataset["guessWidth"]) || 96,
+      Number(img.dataset["guessHeight"]) || 48
+    );
   });
 
   if (img.complete) {
@@ -66,18 +65,18 @@ function loadImg(img: HTMLImageElement) {
 }
 
 function guessImgSize(url: string) {
-  let width = "100%";
-  let height = "256px";
+  let width = "512";
+  let height = "384";
 
   // Combined regex for width and height
   const widthMatch = url.match(/(?:width|w)=(\d+)|(\d{2,4})(?:x|_)\d{2,4}/);
   const heightMatch = url.match(/(?:height|h)=(\d+)|\d{2,4}(?:x|_)(\d{2,4})/);
 
   if (widthMatch) {
-    width = `${widthMatch[1] || widthMatch[2]}px`;
+    width = `${widthMatch[1] || widthMatch[2]}`;
   }
   if (heightMatch) {
-    height = `${heightMatch[1] || heightMatch[2]}px`;
+    height = `${heightMatch[1] || heightMatch[2]}`;
   }
 
   return { width, height };
@@ -90,10 +89,12 @@ export function prepareLazyImg() {
     if (!item.src) return;
     const dataSrc = item.src;
     item.dataset.src = dataSrc;
-    const w = getAttribute(item, "width");
-    const h = getAttribute(item, "height");
+    let w = getAttribute(item, "width");
+    let h = getAttribute(item, "height");
     if (!w || !h) {
       const size = guessImgSize(dataSrc);
+      w = size.width;
+      h = size.height;
       setDataset(item, "guess-width", size.width);
       setDataset(item, "guess-height", size.height);
     }
