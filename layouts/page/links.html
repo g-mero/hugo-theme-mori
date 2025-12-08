@@ -1,28 +1,15 @@
 {{ define "main" }}
-  <section class="mb-lg md:mb-xl mt-xl">
-    <div class="mb-sm">
-      <a class="fs-base border-none inline c-main" id="back-anchor" href="{{relLangURL ""}}" ><span class="icon i-arrow-left-alt"></span>Back</a>
-      <div class="fs-sm c-fg2 border-none inline-flex items-center bg-bg1 px-md py-xs lh-tight rounded-lg ml-xs md:ml-sm">Page</div>
-    </div>
-
-    <h1 class="fs-xl font-600 m-0 mb-xs lh-tight break-all">{{ .Title }}</h1>
-    {{ with .Description }}
-      <div class="prose fs-base lh-relaxed c-fg3 mb-md">
-        {{ . }}
-      </div>
-    {{ end }}
-  </section>
-
   {{ with site.Data.links }}
-    {{/* Collect all groups from data/links/ directory */}}
+    {{/* Collect all groups and count total links */}}
     {{ $allGroups := slice }}
+    {{ $totalLinks := 0 }}
     {{ range $key, $value := . }}
       {{ if ne $key "settings" }}
         {{ $allGroups = $allGroups | append $value }}
       {{ end }}
     {{ end }}
 
-    {{/* Merge groups with same name */}}
+    {{/* Merge groups with same name and count total links */}}
     {{ $groupsMap := dict }}
     {{ range $allGroups }}
       {{ $groupName := .name }}
@@ -37,13 +24,24 @@
       {{ end }}
     {{ end }}
 
-    {{/* Convert map back to slice */}}
+    {{/* Convert map back to slice and count total links */}}
     {{ $groups := slice }}
     {{ range $key, $value := $groupsMap }}
       {{ $groups = $groups | append $value }}
+      {{ $totalLinks = add $totalLinks (len $value.items) }}
     {{ end }}
 
     {{ $groups := sort $groups "weight" "asc" }}
+
+    <section>
+      {{ partial "page-header.html" (dict "context" $ "title" $.Title "badge" "Page" "meta" (printf `<span>Total %d links</span>` $totalLinks | safeHTML)) }}
+
+      {{ with $.Content }}
+        <div class="prose mb-md">
+          {{ . }}
+        </div>
+      {{ end }}
+    </section>
 
     <section class="mt-xl">
       {{ range $groups }}

@@ -1,14 +1,16 @@
 {{ define "main" }}
   {{ with .Content }}
-    <div class="prose mb-3xl">
+    <div class="prose mb-2xl">
       {{ . }}
     </div>
   {{ end }}
 
   <section class="mb-2xl">
     <h2 class="fs-lg mb-md pb-xs border-b border-bd1 c-main">{{ i18n "recent_posts" }}</h2>
+    {{- $postsSection := site.Params.postsSection | default "posts" -}}
+    {{- $posts := where site.RegularPages "Section" $postsSection -}}
     <ul class="list-none p-0 m-0">
-      {{ range first 5 site.RegularPages }}
+      {{ range first 5 $posts }}
         <li class="flex flex-col gap-1 mb-md md:flex-row md:items-baseline md:gap-sm md:mb-sm">
           <time class="fs-sm c-fg4 font-mono md:flex-shrink-0 md:min-w-100px" datetime="{{ .Date.Format "2006-01-02" }}">
             {{ .Date.Format "2006-01-02" }}
@@ -17,7 +19,7 @@
         </li>
       {{ end }}
     </ul>
-    <a class="inline-block mt-md c-fg3 hover:c-fg2 hover:b-b fs-sm" href="{{ "posts" | relLangURL }}">{{ i18n "read_more" }} <span class="icon i-arrow-right"></span></a>
+    <a class="inline-block mt-md c-fg3 hover:c-fg2 hover:b-b fs-sm" href="{{ $postsSection | relLangURL }}">{{ i18n "view_all" }} <span class="icon i-arrow-right"></span></a>
   </section>
 
   {{ with site.Data.links }}

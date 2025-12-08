@@ -85,23 +85,11 @@ Example:
 
 See `exampleSite/layouts/_partials/extend-footer.html` for a full example.
 
-### Syntax Highlighting
-
-This theme uses Chroma for syntax highlighting. The default style is GitHub.
-
-To change the syntax highlighting style, regenerate the `_syntax.scss` file:
-
-```bash
-hugo gen chromastyles --style=monokai > assets/css/_syntax.scss
-```
-
-Available styles: `github`, `monokai`, `dracula`, `nord`, `solarized-dark`, `solarized-light`, `vim`, and more.
-
 ## Development
 
 ### Requirements
 
-- Hugo Extended >= 0.146.0
+- Hugo >= 0.146.0
 
 ### Running the Example Site
 

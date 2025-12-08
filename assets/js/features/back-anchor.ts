@@ -1,5 +1,6 @@
 import { findElement } from "../utils/find-element";
 import { useSessionStorage } from "../utils/storage";
+import { makeEventListener } from "../utils/make-event-listener";
 
 function getLocation(key: string) {
   return window.location[key as keyof Location] as string;
@@ -21,7 +22,7 @@ export function prepareBackAnchor() {
     return;
   }
 
-  backAnchor.addEventListener("click", (e) => {
+  makeEventListener(backAnchor, "click", (e) => {
     e.preventDefault();
     window.history.back();
   });

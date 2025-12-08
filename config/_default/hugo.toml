@@ -9,3 +9,7 @@ noClasses = false
 # Enable or disable syntax highlighting styles
 # Should be !noClasses
 syntax = true
+
+# Section containing blog posts (default: "posts")
+# Change this if you want articles in a different directory (e.g., "blog", "articles")
+postsSection = "posts"

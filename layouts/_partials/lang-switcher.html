@@ -1,0 +1,14 @@
+{{- /*
+  Language switcher partial
+  Displays available translations for the current page
+*/ -}}
+
+{{ if .IsTranslated }}
+  <ul class="inline lang-switcher mb-0! pl-0!">
+    {{ range $index, $lang := .Translations }}
+    <li class="mr-sm inline">
+      <a href="{{ $lang.RelPermalink }}" class="c-fg3 border-none fs-xs hover:c-fg2">{{ $lang.Language.LanguageName }}</a>
+    </li>
+    {{ end }}
+  </ul>
+{{ end }}

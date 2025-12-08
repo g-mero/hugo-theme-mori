@@ -1,9 +1,8 @@
 # Page sections
-recent_posts = "Writing"
+recent_posts = "Writings"
 links = "Links"
 
 # Common
-read_more = "Read more"
 view_all = "View all"
 
 # 404 Page

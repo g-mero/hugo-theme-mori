@@ -5,3 +5,11 @@
     <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
   {{- end }}
 {{- end }}
+
+
+{{- with resources.Get "js/custom.js" }}
+  {{- $js := .  }}
+  {{- with $js  | fingerprint }}
+    <script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{- end }}
+{{- end }}

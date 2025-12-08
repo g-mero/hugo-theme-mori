@@ -1,0 +1,30 @@
+{{- /*
+  Article meta partial
+  Displays author, date, updated date, and language switcher
+*/ -}}
+
+{{- $authors := partial "get-authors.html" . }}
+
+{{- if gt (len $authors) 0 }}
+  <span>
+    {{- range $index, $author := $authors -}}
+      {{- if $author.website }}
+        <a href="{{ $author.website }}" class="c-fg3 font-500 no-underline hover:underline border-none" target="_blank" rel="noopener noreferrer">{{ $author.name }}</a>
+      {{- else }}
+        <span class="c-fg3 font-500">{{ $author.name }}</span>
+      {{- end }}
+      {{- if lt (add $index 1) (len $authors) }}<span class="opacity-60">,</span>{{ end }}
+    {{- end }}
+  </span>
+  <span class="opacity-60">·</span>
+{{- end }}
+
+<time class="inline" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{ .Date.Format "Jan 2, 2006" }}
+</time>
+{{- if ne (.Date.Format "2006-01-02") (.Lastmod.Format "2006-01-02") }}
+  <span class="opacity-60">·</span>
+  <time class="inline" datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+    Updated {{ .Lastmod.Format "Jan 2, 2006" }}
+  </time>
+{{- end }}

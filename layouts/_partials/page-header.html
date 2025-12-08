@@ -1,0 +1,53 @@
+{{- /*
+  Page header partial with flexible configuration
+
+  Parameters (passed as dict):
+    context: Current page context (required for language switcher)
+    title: Page title (required)
+    badge: Badge text to show next to back button (string)
+    badgeUrl: URL for badge link (optional)
+    backUrl: URL for back button (defaults to relLangURL "")
+    categories: Categories slice (for articles)
+    meta: Custom meta HTML (optional)
+*/ -}}
+
+{{- $context := .context -}}
+{{- $title := .title | default "" -}}
+{{- $badge := .badge | default "" -}}
+{{- $badgeUrl := .badgeUrl | default "" -}}
+{{- $backUrl := .backUrl | default (relLangURL "") -}}
+{{- $categories := .categories | default nil -}}
+{{- $meta := .meta | default "" -}}
+
+<header class="mb-lg md:mb-xl mt-2xl md:mt-3xl">
+  <div class="mb-sm flex items-center justify-between gap-md h-48px">
+    <div class="flex items-center gap-xs flex-wrap">
+      <a class="fs-base border-none inline c-main" id="back-anchor" href="{{ $backUrl }}" >
+        <span class="icon i-arrow-left-alt"></span>Back
+      </a>
+      {{- if $categories }}
+        {{- range $categories }}
+        <a class="fs-sm c-fg2 border-none inline-flex items-center bg-bg1 px-md py-xs lh-tight rounded-lg ml-xs md:ml-sm" href="{{ .RelPermalink }}" >{{ .LinkTitle }}</a>
+        {{- end }}
+      {{- else if $badge }}
+        <div class="fs-sm c-fg2 border-none inline-flex items-center bg-bg1 px-md py-xs lh-tight rounded-lg ml-xs md:ml-sm">
+          {{- if $badgeUrl }}<a href="{{ $badgeUrl }}" class="border-none c-fg2 hover:c-fg1">{{ $badge }}</a>{{- else }}{{ $badge }}{{- end -}}
+        </div>
+      {{- end }}
+    </div>
+    {{ partial "header-actions.html" $context }}
+  </div>
+
+  <div class="mb-lg">
+    <h1 class="mb-xs fs-xl font-600 m-0 mb-xs lh-tight break-all">{{ $title }}</h1>
+
+    {{- if or $meta $context.IsTranslated }}
+    <div class="fs-sm c-fg3 font-mono">
+      {{- $meta }}
+      {{- if $context }}
+        {{- partial "lang-switcher.html" $context }}
+      {{- end }}
+    </div>
+    {{- end }}
+  </div>
+</header>

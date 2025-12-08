@@ -54,7 +54,7 @@ export function useSessionStorage<T = string>(
 
 export function useLocalStorage<T = string>(
   key: string,
-  defaultValue: never
+  defaultValue?: never
 ): StorageValue<T>;
 export function useLocalStorage<T = string>(
   key: string,

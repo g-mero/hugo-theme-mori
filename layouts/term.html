@@ -1,16 +1,6 @@
 {{ define "main" }}
-  <section class="mb-lg md:mb-xl mt-xl">
-    <div class="mb-sm">
-      <a class="fs-base border-none inline c-main" id="back-anchor" href="{{relLangURL ""}}" ><span class="icon i-arrow-left-alt"></span>Back</a>
-      <div class="fs-sm c-fg2 border-none inline-flex items-center bg-bg1 px-md py-xs lh-tight rounded-lg ml-xs md:ml-sm">{{ .Parent.Title }}</div>
-    </div>
-
-    <div class="mb-lg">
-      <h1 class="mb-xs fs-xl font-600 m-0 mb-xs lh-tight break-all">{{ .Title }}</h1>
-      <div class="fs-sm c-fg3 font-mono">
-        <span>Total {{ len .Pages }} pages</span>
-      </div>
-    </div>
+  <section>
+    {{ partial "page-header.html" (dict "context" . "title" .Title "badge" .Parent.Title "badgeUrl" .Parent.RelPermalink "meta" (printf `<span>Total %d pages</span>` (len .Pages) | safeHTML)) }}
 
     {{ with .Content }}
       <div class="prose mb-md">

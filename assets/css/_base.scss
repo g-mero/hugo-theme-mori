@@ -31,6 +31,13 @@
   --transition-base: all 0.2s ease;
 }
 
+.dark {
+  // Colors (Dark mode overrides)
+  @each $name, $color in vars.$colors-dark {
+    --color-#{$name}: #{$color};
+  }
+}
+
 html {
   font-size: 17px;
   line-height: var(--lh-base);
@@ -63,4 +70,27 @@ a {
     display: inline;
     opacity: 0.5;
   }
+}
+
+// view transition styles
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 2147483646;
+}
+
+.dark::view-transition-old(root) {
+  z-index: 2147483646;
+}
+
+.dark::view-transition-new(root) {
+  z-index: 1;
 }
