@@ -3,6 +3,7 @@ import {
   initializeTheme,
   prepareThemeSwitcher,
 } from "./features/theme-switcher";
+import { prepareLazyImg } from "./features/lazy-img";
 import { makeEventListener } from "./utils/make-event-listener";
 
 makeEventListener("DOMContentLoaded", () => {
@@ -11,4 +12,6 @@ makeEventListener("DOMContentLoaded", () => {
   // theme switcher
   initializeTheme();
   prepareThemeSwitcher();
+
+  prepareLazyImg();
 });

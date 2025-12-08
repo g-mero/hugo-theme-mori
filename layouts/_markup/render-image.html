@@ -16,9 +16,7 @@
     {{- end -}}
   {{- end -}}>
   <img
-    class="my-0 rounded-md"
-    loading="lazy"
-    decoding="async"
+    class="my-0 rounded-md lazy-img"
     alt="{{ $altText }}"
     {{ if $resource -}}
       {{ with $resource.Width }}width="{{ . }}"{{ end }}

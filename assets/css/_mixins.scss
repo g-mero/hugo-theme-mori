@@ -14,6 +14,12 @@
   }
 }
 
+@mixin dark-mode {
+  .dark & {
+    @content;
+  }
+}
+
 // Typography
 @mixin heading-base {
   font-weight: 600;
