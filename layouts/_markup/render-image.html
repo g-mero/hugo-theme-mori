@@ -21,12 +21,12 @@
     {{ if $resource -}}
       {{ with $resource.Width }}width="{{ . }}"{{ end }}
       {{ with $resource.Height }}height="{{ . }}"{{ end }}
-      src="{{ $resource.RelPermalink }}"
+      data-src="{{ $resource.RelPermalink }}"
     {{- else -}}
-      src="{{ $urlStr }}"
+      data-src="{{ $urlStr }}"
     {{- end }}>
 
   {{- if $caption -}}
-    <figcaption>{{ $caption | markdownify }}</figcaption>
+    <figcaption>{{ $caption }}</figcaption>
   {{- end -}}
 </figure>

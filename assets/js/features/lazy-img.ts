@@ -1,12 +1,8 @@
 import { findElements } from "../utils/find-element";
-import {
-  getAttribute,
-  removeDataset,
-  setAttribute,
-  setDataset,
-} from "../utils/attribute";
+import { getAttribute, getDataset, setDataset } from "../utils/attribute";
 import { makeEventListener } from "../utils/make-event-listener";
 import { noop } from "../utils/constant";
+import { getMoriConfig } from "../features/configuration";
 
 function blankImgData(width: number, height: number): string {
   const temporaryImage =
@@ -29,7 +25,7 @@ const io = new IntersectionObserver(
 );
 
 function loadImg(img: HTMLImageElement) {
-  const dataSrc = img.dataset.src;
+  const dataSrc = getDataset(img, "src");
   if (!dataSrc) return;
   setDataset(img, "status", "loading");
   const origTitle = img.title;
@@ -37,6 +33,7 @@ function loadImg(img: HTMLImageElement) {
   img.src = dataSrc;
   const loaded = () => {
     setDataset(img, "status", "loaded");
+    setDataset(img, "solved");
     img.title = origTitle;
   };
 
@@ -47,10 +44,13 @@ function loadImg(img: HTMLImageElement) {
     clearErrHandler();
     clearLoadHandler();
     setDataset(img, "status", "error");
+    setDataset(img, "solved");
     img.title = "Load failed";
     img.src = blankImgData(
-      Number(img.dataset["guessWidth"]) || 96,
-      Number(img.dataset["guessHeight"]) || 48
+      Number(getDataset(img, "guess-width") || getAttribute(img, "width")) ||
+        512,
+      Number(getDataset(img, "guess-height") || getAttribute(img, "height")) ||
+        384
     );
   });
 
@@ -64,42 +64,22 @@ function loadImg(img: HTMLImageElement) {
   }
 }
 
-function guessImgSize(url: string) {
-  let width = "512";
-  let height = "384";
-
-  // Combined regex for width and height
-  const widthMatch = url.match(/(?:width|w)=(\d+)|(\d{2,4})(?:x|_)\d{2,4}/);
-  const heightMatch = url.match(/(?:height|h)=(\d+)|\d{2,4}(?:x|_)(\d{2,4})/);
-
-  if (widthMatch) {
-    width = `${widthMatch[1] || widthMatch[2]}`;
-  }
-  if (heightMatch) {
-    height = `${heightMatch[1] || heightMatch[2]}`;
-  }
-
-  return { width, height };
-}
-
 export function prepareLazyImg() {
-  findElements<HTMLImageElement>(
-    'img.lazy-img:not([data-status="loaded"])'
-  ).forEach((item) => {
-    if (!item.src) return;
-    const dataSrc = item.src;
-    item.dataset.src = dataSrc;
-    let w = getAttribute(item, "width");
-    let h = getAttribute(item, "height");
-    if (!w || !h) {
-      const size = guessImgSize(dataSrc);
-      w = size.width;
-      h = size.height;
-      setDataset(item, "guess-width", size.width);
-      setDataset(item, "guess-height", size.height);
-    }
-    item.src = blankImgData(Number(w || 1), Number(h || 1));
+  findElements<HTMLImageElement>("img.lazy-img:not([data-solved])").forEach(
+    (item) => {
+      if (!getDataset(item, "src")) return;
+      let w: string | number | null = getAttribute(item, "width");
+      let h: string | number | null = getAttribute(item, "height");
+      if (!w || !h) {
+        const size = getMoriConfig().guessImgSize(item);
+        w = size.width;
+        h = size.height;
+        setDataset(item, "guess-width", `${w}`);
+        setDataset(item, "guess-height", `${h}`);
+      }
+      item.src = blankImgData(Number(w), Number(h));
 
-    io.observe(item);
-  });
+      io.observe(item);
+    }
+  );
 }
