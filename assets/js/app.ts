@@ -6,12 +6,11 @@ import {
 import { prepareLazyImg } from "./features/lazy-img";
 import { makeEventListener } from "./utils/make-event-listener";
 
+// should be called immediately to avoid flash when theme is dark
+initializeTheme();
+
 makeEventListener("DOMContentLoaded", () => {
   prepareBackAnchor();
-
-  // theme switcher
-  initializeTheme();
   prepareThemeSwitcher();
-
   prepareLazyImg();
 });

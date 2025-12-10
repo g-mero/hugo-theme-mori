@@ -1,6 +1,7 @@
 import { findElement } from "../utils/find-element";
 import { useLocalStorage } from "../utils/storage";
 import { makeEventListener } from "../utils/make-event-listener";
+import { triggerCustomEvent } from "../utils/event-helper";
 
 const [storage, setStorage] = useLocalStorage("theme", "light");
 
@@ -73,20 +74,25 @@ function changeTheme(
   setStorage(theme);
 
   // Dispatch theme change event
-  window.dispatchEvent(
-    new CustomEvent("theme-change", {
-      detail: { theme },
-    })
-  );
+  triggerThemeChangeEvent(theme);
 }
 
 // Initialize theme on page load
 export function initializeTheme() {
-  changeTheme(storage() === "dark" ? "dark" : "light");
+  changeTheme(getCurrentTheme());
+}
+
+function triggerThemeChangeEvent(theme: "dark" | "light") {
+  triggerCustomEvent("theme-change", { theme });
+}
+
+function getCurrentTheme(): "dark" | "light" {
+  return storage() === "dark" ? "dark" : "light";
 }
 
 // Setup theme switcher button
 export function prepareThemeSwitcher() {
+  triggerThemeChangeEvent(getCurrentTheme());
   const themeSwitcher = findElement<HTMLButtonElement>("#theme-switcher");
   if (!themeSwitcher) return;
 
