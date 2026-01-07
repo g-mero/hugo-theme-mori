@@ -5,10 +5,11 @@ import { noop } from "../utils/constant";
 import { getMoriConfig } from "../features/configuration";
 
 function blankImgData(width: number, height: number): string {
-  const temporaryImage =
-    `data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 ` +
-    `viewBox=%270 0 ${width} ${height}%27%3E%3C/svg%3E`;
-  return temporaryImage;
+  return (
+    `data:image/svg+xml,` +
+    `%3Csvg xmlns='http://www.w3.org/2000/svg' ` +
+    `width='${width}' height='${height}'/%3E`
+  )
 }
 
 const io = new IntersectionObserver(
