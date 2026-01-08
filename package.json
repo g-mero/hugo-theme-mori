@@ -2,6 +2,7 @@
   "name": "hugo-theme-mori",
   "private": "true",
   "description": "only for scripts",
+  "version": "0.2.1",
   "scripts": {
     "dev": "pnpm run dev:copy-config && concurrently -k -n \"UNOCSS,CSS,JS,HUGO\" -c \"white,gray,blue,green\" \"pnpm:unocss:watch\" \"pnpm:dev:css\" \"pnpm:dev:js\" \"pnpm:serve\"",
     "dev:copy-config": "tsx scripts/copy-config.ts",
@@ -11,6 +12,7 @@
     "unocss:watch": "unocss --watch",
     "dev:css": "tsx scripts/build-css.ts dev watch",
     "dev:js": "tsx scripts/build-js.ts dev",
+    "bump": "bumpp --execute \"pnpm i\" --no-push",
     "prepare": "husky"
   },
   "keywords": [],
@@ -29,11 +31,12 @@
     "concurrently": "^9.2.1",
     "husky": "^9.1.7",
     "lightningcss": "^1.30.2",
-    "lint-staged": "^16.2.6",
-    "sass-embedded": "^1.93.3",
-    "tsdown": "^0.17.0",
+    "lint-staged": "^16.2.7",
+    "sass-embedded": "^1.97.2",
+    "tsdown": "^0.18.4",
     "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "bumpp": "^10.3.2"
   },
   "lint-staged": {
     "{assets/css/**/*.{scss,css},layouts/**/*.html,unocss.config.ts}": [
