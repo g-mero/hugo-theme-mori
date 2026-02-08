@@ -17,7 +17,7 @@ async function buildJs() {
     clean: true,
     minify: !isDev,
     sourcemap: false,
-    watch: isDev ? "./assets/**/*.ts" : undefined,
+    watch: isDev ? "./assets/**/*.ts" : false,
   });
 }
 

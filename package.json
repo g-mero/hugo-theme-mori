@@ -5,17 +5,20 @@
   "version": "0.2.2",
   "scripts": {
     "dev": "pnpm run dev:copy-config && concurrently -k -n \"UNOCSS,CSS,JS,HUGO\" -c \"white,gray,blue,green\" \"pnpm:unocss:watch\" \"pnpm:dev:css\" \"pnpm:dev:js\" \"pnpm:serve\"",
-    "dev:copy-config": "tsx scripts/copy-config.ts",
+    "dev:copy-config": "node scripts/copy-config.ts",
     "serve": "hugo server -s exampleSite --gc --cleanDestinationDir --themesDir ../..",
-    "build:css": "unocss && tsx scripts/build-css.ts",
-    "build:js": "tsx scripts/build-js.ts",
+    "build:css": "unocss && node scripts/build-css.ts",
+    "build:js": "node scripts/build-js.ts",
     "unocss:watch": "unocss --watch",
-    "dev:css": "tsx scripts/build-css.ts dev watch",
-    "dev:js": "tsx scripts/build-js.ts dev",
+    "dev:css": "node scripts/build-css.ts dev watch",
+    "dev:js": "node scripts/build-js.ts dev",
     "bump": "bumpp --execute \"pnpm i\" --no-push",
     "prepare": "husky"
   },
   "keywords": [],
+  "engines": {
+    "node": ">=24"
+  },
   "author": "",
   "license": "MIT",
   "packageManager": "pnpm@10.22.0",
@@ -23,7 +26,7 @@
     "> 0.1% and fully supports css-variables"
   ],
   "devDependencies": {
-    "@types/node": "^24.10.1",
+    "@types/node": "^24.10.12",
     "@unocss/cli": "66.5.9",
     "unocss": "66.5.9",
     "browserslist": "^4.28.0",
@@ -33,8 +36,7 @@
     "lightningcss": "^1.30.2",
     "lint-staged": "^16.2.7",
     "sass-embedded": "^1.97.2",
-    "tsdown": "^0.18.4",
-    "tsx": "^4.20.6",
+    "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
     "bumpp": "^10.3.2"
   },
