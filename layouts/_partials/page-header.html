@@ -20,17 +20,17 @@
 {{- $meta := .meta | default "" -}}
 
 <header class="mb-lg md:mb-xl mt-2xl md:mt-3xl">
-  <div class="mb-sm flex items-center justify-between gap-md h-48px">
+  <div class="flex items-center justify-between gap-md h-48px">
     <div class="flex items-center gap-xs flex-wrap">
       <a class="fs-base border-none inline c-main" id="back-anchor" href="{{ $backUrl }}" >
         <span class="icon i-arrow-left-alt"></span>Back
       </a>
       {{- if $categories }}
         {{- range $categories }}
-        <a class="fs-sm c-fg2 border-none inline-flex items-center bg-bg1 px-md py-xs lh-tight rounded-lg ml-xs md:ml-sm" href="{{ .RelPermalink }}" >{{ .LinkTitle }}</a>
+        <a class="fs-sm c-fg1 border-none inline-flex items-center bg-bg1 px-md py-xs lh-tight rounded-lg ml-xs md:ml-sm" href="{{ .RelPermalink }}" >{{ .LinkTitle }}</a>
         {{- end }}
       {{- else if $badge }}
-        <div class="fs-sm c-fg2 border-none inline-flex items-center bg-bg1 px-md py-xs lh-tight rounded-lg ml-xs md:ml-sm">
+        <div class="fs-sm c-fg1 border-none inline-flex items-center bg-bg1 px-md py-xs lh-tight rounded-lg ml-xs md:ml-sm">
           {{- if $badgeUrl }}<a href="{{ $badgeUrl }}" class="border-none c-fg2 hover:c-fg1">{{ $badge }}</a>{{- else }}{{ $badge }}{{- end -}}
         </div>
       {{- end }}

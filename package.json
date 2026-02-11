@@ -3,6 +3,7 @@
   "private": "true",
   "description": "only for scripts",
   "version": "0.2.2",
+  "type": "module",
   "scripts": {
     "dev": "pnpm run dev:copy-config && concurrently -k -n \"UNOCSS,CSS,JS,HUGO\" -c \"white,gray,blue,green\" \"pnpm:unocss:watch\" \"pnpm:dev:css\" \"pnpm:dev:js\" \"pnpm:serve\"",
     "dev:copy-config": "node scripts/copy-config.ts",

@@ -6,7 +6,10 @@ import {
   statSync,
   rmSync,
 } from "fs";
-import { join } from "path";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 /**
  * Copy config files from config/_default to exampleSite before development
